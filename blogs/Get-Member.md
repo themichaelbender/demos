@@ -93,9 +93,10 @@ And there you have your table showing all the information you need.
 
 Another great use for get-member is when working with Active Directory objects. As you can imagine, user objects have a bunch of properties, and they are not all displayed when using the *Get-ADUser* command. Using Get-Member will help you find all the properties for user objects. 
 
-**One thing of note with Get-ADUser:** The default usage only displays a subset of the properties available on a user object. To retrieve all the properties associated with a user object, you need to add the parameter *-Properties* with the '*' (or wildcard) value. Here's how that would be used with Get-Member to see all the user properties.
+**Important Note**
+With Get-ADUser and other Get- commands for Active Directory, the default usage only displays a subset of the properties available on a user object. To retrieve all the properties associated with an AD object, you need to add the parameter *-Properties* with the '*' (or wildcard) value. Here's how to use Get-Member to see all the user properties.
 ```
-Get-ADGroup -Properties * | Get-Member
+Get-ADUser -Properties * | Get-Member
 ```
 
 So next time you run into a PowerShell command and it is not giving you all the information you need, turn to Get-Member.
