@@ -1,8 +1,8 @@
 # 
 
-For me, one of the most important features of PowerShell is the ability to find all the answers you need in the shell. From the early days, PowerShell has included commands for finding cmdlets and functions within the shell like `Get-Command`. `Get-Command` is one of the three most well known PowerShell commands, `Get-Help` and `Get-Member` being the other two. This post will be an exploration of using `Get-Command` and `Get-Help`. You can get information on Get-Member [in this post](https://techcommunity.microsoft.com/t5/ITOps-Talk-Blog/PowerShell-Basics-Getting-More-Information-with-Get-Member/ba-p/285407?WT.mc_id=blog-techcommunity-mibender).
+For me, one of the most important features of PowerShell is the ability to find all the answers you need in the shell. From the early days, PowerShell has included commands for finding cmdlets and functions within the shell including `Get-Command`. `Get-Command` is one of the three most well-known PowerShell commands, `Get-Help` and `Get-Member` being the other two. This post will be an exploration of using `Get-Command` and `Get-Help`. You can get information on Get-Member [in this post](https://techcommunity.microsoft.com/t5/ITOps-Talk-Blog/PowerShell-Basics-Getting-More-Information-with-Get-Member/ba-p/285407?WT.mc_id=blog-techcommunity-mibender).
 
-Let's start with `Get-Command`. Let's say you want to see *everything* installed in your PowerShell console. That's pretty easy. Type `Get-Command` and it produces a list of all the commands installed (functions, alaises, cmdlets).
+Let's start with `Get-Command`. Let's say you want to see *everything* installed in your PowerShell console. That's pretty easy. Type `Get-Command` and it produces a list of all the commands installed (functions, aliases, cmdlets).
 ```
 PS C:\Users\mibender> get-command
 
@@ -19,7 +19,7 @@ Alias           Add-AdlStoreVirtualNetworkRule                     0.5.0      Az
 
 This displays a few things of importance:
 - CommandType is the type of command. These include alias, function, and cmdlet commands currently installed.
-- Name is self explanatory, and is what you invoke to run the command.
+- Name is self-explanatory and is what you invoke to run the command.
 - Version is the current version of the command you have installed.
 - Source is the module that includes the command.
 
@@ -53,7 +53,7 @@ Function        Get-BCContentServerConfiguration                   1.0.0.0    Br
 Function        Get-BCDataCache                                    1.0.0.0    BranchCache
 ...
 ```
-You'll notice I used a wildcard (`*`) in my value for name so I get every command that begins with "Get-". You can also see I'm following a systematic approach to get to what I'm looking for: Start with a wide net, and gradually reduce the size of the items caught. I use this approach with all queries for information with PowerShell. 
+You'll notice I used a wildcard (`*`) in my value for name. It will get every command that begins with "Get-". You can also see I'm following a systematic approach to find to what I'm looking for: Start with a wide net, and gradually reduce the size of the items caught. I use this approach with all queries for information with PowerShell. 
 
 So, let's try something, I want to find a command that allows me to modify the firewall rules on a Windows host. Sure I could look on the internet, but that defeats the purpose of using tools in the box.
 
@@ -107,13 +107,13 @@ Function        Rename-NetFirewallRule                             2.0.0.0    Ne
 Function        Set-NetFirewallRule                                2.0.0.0    NetSecurity
 Function        Show-NetFirewallRule                               2.0.0.0    NetSecurity
 ```
-Ah yes, now we are getting somewhere. I've managed to list all of the commands that work with NetFirewallRule. Ok. Which should I pick? Well, that can be tricky. We have a number of verbs here. In the case of modifying the Firewall, two verbs that stick out: New and Set. Here's the best way to remember these verbs and how they work:
+Ah yes, now we are getting somewhere. I've managed to list all of the commands that work with NetFirewallRule. Ok. Which should I pick? Well, that can be tricky. We have a number of verbs here used with -NetFireWallRule. In this case, two verbs stick out: New and Set. Here's the best way to remember these verbs and how they work:
 - New **ALWAYS** should create net-new things. It should never be used to modify existing things. Use it to create new things.
 - Set **NEVER** should create net-new things. Use it to modify things.
 
 So `Set-NetFirewallRule` looks to be our winner. So, how do we use it? PowerShell Help to the rescue. PowerShell has a built-in help system to provide you all the information you need. It's run by typing `Get-Help <Command>`.
 
-**Note: If you don't see the output below, run `Update-Help`. Microsoft updates help files on a regular basis so you should make sure to run this occassional. You may need to run PowerShell as an admin for `Update-Help` to work. Also, all versions of PowerShell ship without the help files so they need to be updated upon first use.**
+**Note: If you don't see the output below, run `Update-Help`. Microsoft updates help files on a regular basis so you should make sure to run this occassionaly. You may need to run PowerShell as an admin for `Update-Help` to work. Also, all versions of PowerShell ship without the help files so they need to be updated upon first use.**
 
 ```
 PS C:\Users\mibender> get-help set-netfirewallrule
@@ -230,7 +230,7 @@ REMARKS
     For technical information, type: "get-help Set-NetFirewallRule -full".
     For online help, type: "get-help Set-NetFirewallRule -online"
 ```
-And, it is the command we are looking for. The Synopsis and Description tells us what the command does (modifies the firewall rules). 
+And, it is the command we are looking for. The Synopsis and Description tell us what the command does (modifies the firewall rules). 
 
 To begin using the command, you can review the syntax for the parameters available with the command. For those new to PowerShell, this can be daunting so I'll show you my favorite use of help with the `-examples` parameter
 
@@ -358,11 +358,10 @@ PS C:\Users\mibender> Help set-netfirewallrule -Parameter RemoteAddress
     Accept wildcard characters?  false
 
 ```
-Now, that gets us the information we are looking for including a description of the parameter, acceptable formats for the parameter, and more. One important piece of information is the the `<>` after the parameter name. This tells you the type of value the parameter accepts. In this case it's a string value (numbers/letters/symbols). But it could have been a boolean or other value. This is important so you know what you can and can't use in a parameter. This becomes super important later in your PowerShell journey when you begin using the pipeline.
+Now, that gets us the information we are looking for including a description of the parameter, acceptable formats for the parameter, and more. One important piece of information is the `<...>` value after the parameter name. This tells you the type of value the parameter accepts. In this case it's a string value (numbers/letters/symbols). But it could have been a boolean or other value. This is important so you know what you can and can't use in a parameter. This becomes super important later in your PowerShell journey when you begin using the pipeline.
 
-So there you have it: A quick and easy approach for finding commands & how to use them. Use `Get-Command` and `Get-Help` whenever you need to do something in PowerShell.
+So there you have it! A quick and easy approach for finding commands & how to use them. Use `Get-Command` and `Get-Help` whenever you need to do something in PowerShell. Add on `Get-Member`, and your on your way to becoming a PowerShell Guru!
 
 If you want more information on each command, check out the docs below:
 [Get-Command]()
 [Get-Help]()
-
