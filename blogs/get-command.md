@@ -361,5 +361,5 @@ Now, that gets us the information we are looking for including a description of 
 So there you have it! A quick and easy approach for finding commands & how to use them. Use `Get-Command` and `Get-Help` whenever you need to do something in PowerShell. Add on `Get-Member`, and your on your way to becoming a PowerShell Guru!
 
 If you want more information on each command, check out the docs below:
-[Get-Command]()
-[Get-Help]()
+[Get-Command](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/get-command?WT.mc_id=blog-techcommunity-mibender,view=powershell-6)
+[Get-Help](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/get-help?WT.mc_id=blog-techcommunity-mibender,view%3Dpowershell-6&view=powershell-6)
