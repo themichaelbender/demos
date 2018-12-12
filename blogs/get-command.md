@@ -1,5 +1,3 @@
-# 
-
 For me, one of the most important features of PowerShell is the ability to find all the answers you need in the shell. From the early days, PowerShell has included commands for finding cmdlets and functions within the shell including `Get-Command`. `Get-Command` is one of the three most well-known PowerShell commands, `Get-Help` and `Get-Member` being the other two. This post will be an exploration of using `Get-Command` and `Get-Help`. You can get information on Get-Member [in this post](https://techcommunity.microsoft.com/t5/ITOps-Talk-Blog/PowerShell-Basics-Getting-More-Information-with-Get-Member/ba-p/285407?WT.mc_id=blog-techcommunity-mibender).
 
 Let's start with `Get-Command`. Let's say you want to see *everything* installed in your PowerShell console. That's pretty easy. Type `Get-Command` and it produces a list of all the commands installed (functions, aliases, cmdlets).
@@ -362,6 +360,6 @@ Now, that gets us the information we are looking for including a description of 
 
 So there you have it! A quick and easy approach for finding commands & how to use them. Use `Get-Command` and `Get-Help` whenever you need to do something in PowerShell. Add on `Get-Member`, and your on your way to becoming a PowerShell Guru!
 
-If you want more information on each command, check out the docs below:
-[Get-Command]()
-[Get-Help]()
+If you want more information on each of these commands, check out the docs below:
+[Get-Command](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/get-command?WT.mc_id=blog-techcommunity-mibender,view=powershell-6)
+[Get-Help](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/get-help?WT.mc_id=blog-techcommunity-mibender,view%3Dpowershell-6&view=powershell-6)
