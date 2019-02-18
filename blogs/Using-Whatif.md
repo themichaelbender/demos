@@ -1,4 +1,4 @@
-#PowerShell Basics: Don't Fear Hitting Enter with -WhatIf
+# PowerShell Basics: Don't Fear Hitting Enter with -WhatIf
 Chances are you've run into this situation. You've built a script, or a one-liner, to perform a specific task, but you don't have a way to thoroughly test it without hitting Enter. That moment before hitting enter can be difficult. Knowing this need, there is a switch available with many PowerShell commands called `-whatif`. 
 
 With `-whatif`, PowerShell will run your command in its entirety without executing the actions of the command so no changes occur. It displays a listing of actions to be performed against the affected objects in the console window. This is great for the commands that do not display any output when executed, or if you are unsure of the overall impact of your command.
