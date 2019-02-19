@@ -168,7 +168,7 @@ PS CMD>
 
 One thing to remember with this and other preference variables you define in the console is they only maintain the setting in your current shell. When you close and re-open PowerShell, the preference will reset.
 
-Another thing is a *word of caution* on using `-WhatIf`. Because it is functionality that is added into commands, the implementer may not implement it properly. I've never run into issues with Microsoft-built commands using -whatif like Microsoft Exchange, Active Directory, and many of the built-in commands I use below. However, I cannot speak for code samples you may find in the wild. To be safe, you should test -whatif against a smaller pool of targets vs. trying to modify every Exchange mailbox in your organization.
+Another thing is a **word of caution** on using `-WhatIf`. Because it is functionality that is added into commands, the implementer may not implement it properly. I've never run into issues with Microsoft-built commands using `-WhatIf` like Microsoft Exchange, Active Directory, and many of the built-in commands I use below. However, I cannot speak for code samples you may find in the wild. To be safe, you should test -whatif against a smaller pool of targets vs. trying to modify every Exchange mailbox in your organization.
 
 So the next time you need to perform some PowerShell tasks, add -whatif before you execute, and stop fearing the `Enter` key.
 
