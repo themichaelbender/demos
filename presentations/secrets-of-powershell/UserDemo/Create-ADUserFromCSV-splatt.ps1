@@ -3,56 +3,56 @@
 
 # UserSetup
 
-    $SetPass = read-host -Prompt 'Enter Password' -assecurestring
+$SetPass = read-host -Prompt 'Enter Password' -assecurestring
 
-    $Users =Import-CSV .\goodusers-short.csv
+$Users =Import-CSV .\goodusers1.csv
 
-    $cred = Get-Credential
+$cred = Get-Credential
 
-    $Cities = Import-Csv .\city.csv
+$Cities = Import-Csv .\city.csv
 
-    $Departments = Import-csv .\department.csv
+$Departments = Import-csv .\department.csv
 
 # ForEach loop creates users from CSV file
 
-    ForEach ($user in $users){ 
-        $GivenName = $user.firstname
-        $surname = $user.Lastname
-        $Department = (get-random -min 0 -max (($Departments.Department)))
-        $City = (get-random -min 0 -max (($cities)))
-        $Sam = $surname.substring(0,1)
-        $join = $GivenName,$surname
-        #Splatt
-        $ADValues = @{
-            Credential = $cred
-            
-            Path = "OU=Users,OU=CompanyOU,DC=Company,DC=pri"
-    
-            department = $Department `
-    
-            SamAccountName = $join -join ""
-    
-            Name = $GivenName+" "+$surname
-    
-            Surname = $surname
-    
-            GivenName = $GivenName
-    
-            UserPrincipalName = $GivenName+"."+$Surname+"@company.pri"
-    
-            City = $City
-    
-            ChangePasswordAtLogon = $False
-    
-            AccountPassword = $SetPass
-    
-            Enabled = $False
-        } 
-    #$ADValues
-    New-ADUser @ADValues -Verbose
-
+ForEach ($user in $users){ 
+    $GivenName = $user.firstname
+    $surname = $user.Lastname
+    $Department = (get-random -min 0 -max (($Departments.Department)))
+    $City = (get-random -min 0 -max (($cities)))
+    $Sam = $surname.substring(0,1)
+    $join = $GivenName,$surname
+    #Splatt
+    $ADValues = @{
+        Credential = $cred
         
-    #$CN="Cn="+$USER.Name+","+$user.DistinguishedName
+        Path = "OU=Users,OU=CompanyOU,DC=Company,DC=pri"
 
-    #Set-ADObject -Identity $CN -ProtectedFromAccidentalDeletion $False -Verbose
-        }
+        department = $Department `
+
+        SamAccountName = $join -join ""
+
+        Name = $GivenName+" "+$surname
+
+        Surname = $surname
+
+        GivenName = $GivenName
+
+        UserPrincipalName = $GivenName+"."+$Surname+"@company.pri"
+
+        City = $City
+
+        ChangePasswordAtLogon = $False
+
+        AccountPassword = $SetPass
+
+        Enabled = $False
+    } 
+#$ADValues
+New-ADUser @ADValues -Verbose
+
+    
+$CN="Cn="+$USER.Name+",OU=Users,OU=CompanyOU,DC=Company,DC=pri"
+
+#Set-ADObject -Identity $CN -ProtectedFromAccidentalDeletion $False -Verbose
+    }

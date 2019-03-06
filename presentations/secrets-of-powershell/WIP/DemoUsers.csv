@@ -1,0 +1,8 @@
+DistinguishedName,Department,SamAccountName,Name,GivenName,Surname,UserPrincipalName,City,Enabled,ChangePasswordAtLogon
+"OU=Users,OU=Madison,OU=CompanyOU,DC=Bender,DC=Priv",Operations,ShawnM,ShawnM,Shawn,Melendez,ShawnM@wiredbraincoffee.priv,Madison,$False,$True
+"OU=Users,OU=Madison,OU=CompanyOU,DC=Bender,DC=Priv",IT,LynneB,LynneB,Lynne,Baxter,LynneB@wiredbraincoffee.priv,Madison,$False,$True
+"OU=Users,OU=Madison,OU=CompanyOU,DC=Bender,DC=Priv",Development,ClaudeL,ClaudeL,Claude,Loiselle,ClaudeL@wiredbraincoffee.priv,Madison,$False,$True
+"OU=Users,OU=Madison,OU=CompanyOU,DC=Bender,DC=Priv",Operations,TomT,TomT,Tom,Timmons,tomt@wiredbraincoffee.priv,Madison,$False,$True
+"OU=Users,OU=Madison,OU=CompanyOU,DC=Bender,DC=Priv",Operations,bobj,bobj,Bob,Jones,bobj@wiredbraincoffee.priv,Madison,$False,$True
+"OU=Users,OU=Madison,OU=CompanyOU,DC=Bender,DC=Priv",IT,todds,todds,Todd,Smith,todds@wiredbraincoffee.priv,Madison,$False,$True
+"OU=Users,OU=Madison,OU=CompanyOU,DC=Bender,DC=Priv",IT,mbadmin,mbadmin,Michael,Bender-Admin,mbadmin@wiredbraincoffee.priv,Chicago,$True,$False
