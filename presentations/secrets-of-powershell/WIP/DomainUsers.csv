@@ -1,0 +1,6 @@
+GivenName,Surname,Department,SamAccountName,UserPrincipalName,City,Enabled,ChangePasswordAtLogon
+Florrie,Malone,IT,FlorrieMalone,FlorrieMalone@company.pri,Long Beach,False,True
+Nellie,Horne,MKTG,NellieHorne,NellieHorne@company.pri,Seattle,False,True
+Oliver,Morse,SEC,OliverMorse,OliverMorse@company.pri,Redmond,False,True
+Lynetta,Hatfield,HR,LynettaHatfield,LynettaHatfield@company.pri,Berlin,False,True
+Oliver,Vincent,HR,OliverVincent,OliverVincent@company.pri,Redmond,False,True
