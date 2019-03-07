@@ -13,13 +13,14 @@ Not just for Windows anymore, PowerShell is the cross-platform language for auto
   
 ## Demos
 
-* Creating 1400+ users in 2 minutes
-* Finding Info in the Shell
-* Running Commands with Variables and Privilege
-* Working with Objects
-* Working in Active Directory
-* Splatting
-* Working with VS Code
+* [Creating 1400+ users in 2 minutes](https://github.com/themichaelbender-ms/demos/tree/master/presentations/secrets-of-powershell/Demos/)
+* [Finding Info in the Shell pt1](https://github.com/themichaelbender-ms/demos/tree/master/presentations/secrets-of-powershell/Demos/findingpt1.txt)
+* * [Finding Info in the Shell pt2](https://github.com/themichaelbender-ms/demos/tree/master/presentations/secrets-of-powershell/Demos/findingpt2.txt)
+* [Running Commands with Variables and Privilege](https://github.com/themichaelbender-ms/demos/tree/master/presentations/secrets-of-powershell/Demos/variables.txt)
+* [Working with Objects](https://github.com/themichaelbender-ms/demos/tree/master/presentations/secrets-of-powershell/Demos/objects.txt)
+* [Working in Active Directory](https://github.com/themichaelbender-ms/demos/tree/master/presentations/secrets-of-powershell/Demos/ad.txt)
+* [Remoting](https://github.com/themichaelbender-ms/demos/tree/master/presentations/secrets-of-powershell/Demos/remoting.txt)
+* [Implicit Remoting](https://github.com/themichaelbender-ms/demos/tree/master/presentations/secrets-of-powershell/Demos/implicitremoting.txt)
 
 Slides for presentation - [SecretsOfPowershell.pdf](https://github.com/themichaelbender-ms/demos/blob/master/presentations/secrets-of-powershell/secrets-of-powershell.pdf)
 
