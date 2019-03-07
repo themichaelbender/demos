@@ -23,7 +23,7 @@ Not just for Windows anymore, PowerShell is the cross-platform language for auto
 
 Slides for presentation - SecretsOfPowershell.pdf
 
-Demo Code
+[Demo Code](https://github.com/themichaelbender-ms/demos/blob/master/presentations/secrets-of-powershell/demos/)
 
 Resources
 
