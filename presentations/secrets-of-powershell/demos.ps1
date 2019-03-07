@@ -25,7 +25,7 @@ Get-ADUser -Filter * -SearchBase "OU=Users,OU=CompanyOU,DC=Company,DC=pri" | Mea
     Get-NetFirewallRule -Name *RemoteDesktop* | FT
     #Endregion
 
-#Region - Elevating Commands for privelege
+#Region - Running Commands with Privilege
     $credential = Get-Credential
 #Endregion
 
@@ -85,7 +85,7 @@ https://docs.microsoft.com/en-us/powershell/module/activedirectory/?view=winserv
     https://4sysops.com/archives/using-implicit-powershell-remoting-to-import-remote-modules/
 #Endregion
 
-    #Region Using VS Code
+#Region Using VS Code
 ctrl+shift+P
 
 SS
