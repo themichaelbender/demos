@@ -25,7 +25,7 @@ Slides for presentation - [SecretsOfPowershell.pdf](https://github.com/themichae
 
 [Demo Code](https://github.com/themichaelbender-ms/demos/blob/master/presentations/secrets-of-powershell/demos/)
 
-Resources
+Resources for PowerShell in Github - [powershelltips](https://github.com/themichaelbender-ms/powershelltips)
 
 [PowerShell Documentation at docs.microsoft.com](https://aka.ms/pslearn)
 
