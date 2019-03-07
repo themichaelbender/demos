@@ -12,8 +12,10 @@ Not just for Windows anymore, PowerShell is the cross-platform language for auto
 * Objects and The Pipeline
   
 ## Demos
+All of the code from the session is available via the links below in text files. You can use these as a basis for learning more, and trying out how they work.
+**Note: the demo environment used a basic Windows Active Directory domain, so some of the commands are specific to the domain, company.pri, and resources available within it.**
 
-* [Creating 1400+ users in 2 minutes](https://github.com/themichaelbender-ms/demos/tree/master/presentations/secrets-of-powershell/Demos/)
+* [Creating 1400+ users in 5 minutes](https://github.com/themichaelbender-ms/demos/tree/master/presentations/secrets-of-powershell/Demos/UserDemo/Create-ADUserFromCSV-splatt.ps1)
 * [Finding Info in the Shell pt1](https://github.com/themichaelbender-ms/demos/tree/master/presentations/secrets-of-powershell/Demos/findingpt1.txt)
 * * [Finding Info in the Shell pt2](https://github.com/themichaelbender-ms/demos/tree/master/presentations/secrets-of-powershell/Demos/findingpt2.txt)
 * [Running Commands with Variables and Privilege](https://github.com/themichaelbender-ms/demos/tree/master/presentations/secrets-of-powershell/Demos/variables.txt)
