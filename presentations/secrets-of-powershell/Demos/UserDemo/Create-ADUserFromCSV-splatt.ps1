@@ -19,7 +19,7 @@ ForEach ($user in $users){
     $GivenName = $user.firstname
     $surname = $user.Lastname
     $Department = (get-random -min 0 -max (($Departments.Department)))
-    $City = (get-random -min 0 -max (($cities)))
+    $City = (get-random -min 0 -max (($cities.city)))
     $join = $GivenName,$surname
     
     #Splatt for New-ADUser parameters
