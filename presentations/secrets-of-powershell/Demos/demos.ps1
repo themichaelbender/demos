@@ -1,8 +1,10 @@
 #Secrets of PowerShell demos
 
 #Region Demo01: Create an obscene number of active directory users
+#On DC01
+
 .\userdemo\Create-ADUserFromCSV-splatt.ps1
-Get-ADUser -Filter * -SearchBase "OU=Users,OU=CompanyOU,DC=Company,DC=pri" | FT
+Get-ADUser -Filter * -SearchBase "OU=Users,OU=CompanyOU,DC=Company,DC=pri" | Format-Table
 Get-ADUser -Filter * -SearchBase "OU=Users,OU=CompanyOU,DC=Company,DC=pri" | Measure-Object
 Get-ADUser -Filter * -SearchBase "OU=Users,OU=CompanyOU,DC=Company,DC=pri" | Remove-ADUser
 Get-ADUser -Filter * -SearchBase "OU=Users,OU=CompanyOU,DC=Company,DC=pri" | Measure-Object
@@ -16,13 +18,13 @@ Get-ADUser -Filter * -SearchBase "OU=Users,OU=CompanyOU,DC=Company,DC=pri" | Mea
     get-command -Name get-NetFire*
     help Get-NetFirewallRule 
     Help get-NetFirewallRule -examples
-    Get-NetFirewallRule | gm
+    Get-NetFirewallRule | Get-Member
     Get-NetFirewallRule
     Get-NetFirewallRule -Name *Remote* 
     Get-NetFirewallRule -Name *RemoteDesktop* 
-    Get-NetFirewallRule -Name *RemoteDesktop* | FT
+    Get-NetFirewallRule -Name *RemoteDesktop* | Format-Table
     Get-NetFirewallRule -Name *RemoteDesktop* | Set-NetFirewallRule -Enabled 'True' -Whatif
-    Get-NetFirewallRule -Name *RemoteDesktop* | FT
+    Get-NetFirewallRule -Name *RemoteDesktop* | Format-Table
     #Endregion
 
 #Region - Running Commands with Privilege
@@ -30,7 +32,7 @@ Get-ADUser -Filter * -SearchBase "OU=Users,OU=CompanyOU,DC=Company,DC=pri" | Mea
 #Endregion
 
 #Region Demo - Objects
-    get-service | GM
+    get-service | Get-Member
 
     #Call a Method 
 #Endregion
@@ -45,10 +47,10 @@ Get-ADUser -Filter * -SearchBase "OU=Users,OU=CompanyOU,DC=Company,DC=pri" | Mea
 $logonDate = New-Object System.DateTime(2007, 1, 1)
 Get-ADUser -filter { lastLogon -le $logonDate } -SearchBase "ou=Madison,OU=CompanyOU,DC=Company,DC=Pri"
 
-https://docs.microsoft.com/en-us/powershell/module/activedirectory/?view=winserver2012-ps
+https://docs.microsoFormat-Table.com/en-us/powershell/module/activedirectory/?view=winserver2012-ps
 #Endregion
 
-#Region Demo Filter Left | Format Right
+#Region Demo Filter LeFormat-Table | Format Right
 
     #Demo1 Filter on DC01
     #Demo2 Filter at Client
@@ -66,7 +68,6 @@ https://docs.microsoft.com/en-us/powershell/module/activedirectory/?view=winserv
     $Remoting 
     Invoke-Command -ComputerName DC01 -Credential $credential -ScriptBlock {
         Get-aduser -Properties * -Filter * 
-    }
     }
 
     $PS = New-PSSession -ComputerName "DC01" -Credential $cred
@@ -86,7 +87,7 @@ https://docs.microsoft.com/en-us/powershell/module/activedirectory/?view=winserv
 #Endregion
 
 #Region Using VS Code
-ctrl+shift+P
+ctrl+shiFormat-Table+P
 
 SS
 #Endregion
@@ -94,4 +95,8 @@ SS
 #Region Console Tours
 # Windows PowerShell Tour
 # PowerShell Core Tour
+#Endregion
+
+#Region Quick Git Primer
+
 #Endregion
