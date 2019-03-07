@@ -21,7 +21,7 @@ Not just for Windows anymore, PowerShell is the cross-platform language for auto
 * Splatting
 * Working with VS Code
 
-Slides for presentation - SecretsOfPowershell.pdf
+Slides for presentation - [SecretsOfPowershell.pdf](https://github.com/themichaelbender-ms/demos/blob/master/presentations/secrets-of-powershell/secrets-of-powershell.pdf)
 
 [Demo Code](https://github.com/themichaelbender-ms/demos/blob/master/presentations/secrets-of-powershell/demos/)
 
