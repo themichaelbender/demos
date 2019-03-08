@@ -1,0 +1,23 @@
+#Demo 5 - Pipelining and Objects
+Help Get-Member
+Get-service | Get-Member
+Get-service | select-object Name,Status
+Get-Service | Select-Object Name,Status | More 
+Get-Service | Select-Object Name,Status | Get-Member
+get-service | where-object status -eq "Stopped" | More
+::
+get-service |
+where-object status -eq "Stopped" |
+Select-Object Name,Status | More
+::
+
+#Finding Files
+Help get-childitem
+Get-ChildItem -Path w:\ -Recurse
+Get-ChildItem -Path w:\ -Recurse | where Extension -EQ '.PNG'
+Get-ChildItem -Path w:\ -Recurse | where Extension -EQ '.PNG'|FT Name,Directory
+Gcm *copy*
+help Copy-Item
+help Copy-Item -Examples
+copy-item m:\desktopbackgrounds -Destination c:\Backgrounds -Recurse -Verbose
+Get-childitem -path .\Backgrounds -recurse

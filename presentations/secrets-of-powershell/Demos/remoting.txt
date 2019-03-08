@@ -1,0 +1,27 @@
+#Using Computername parameter
+$ComputerName = 'DC01'
+Get-Service -ComputerName $ComputerName | select Name,Status
+Get-Service -ComputerName DC01 | select Name,Status
+#Using PSSession
+Gcm *-PSSession
+#Create a PSSession
+$credential = Get-Credential
+New-PSSession -ComputerName $ComputerName -Credential $credential
+Enter-PSSession -Name $ComputerName
+Get-PSSession
+Enter-PSSession -Id 2
+Get-PSSession
+Remove-PSSession -id 2
+Get-PSSession
+#Running command on Remote System
+help Invoke-command
+
+Invoke-command -ComputerName $ComputerName -Credential $credential -ScriptBlock { get-service -ComputerName $ComputerName }
+
+invoke-command -ComputerName $ComputerName -Credential $credential -ScriptBlock { get-service -ComputerName $using:ComputerName }
+
+$data =  invoke-command -ComputerName $ComputerName -Credential $credential -ScriptBlock { get-service -ComputerName $using:ComputerName }
+
+$data | gm
+
+$Data | Select Name,Status,Description

@@ -1,0 +1,13 @@
+Get-ADUser -Identity felixb                                                                 
+Get-ADUser -Identity felixb | format-list                                                             
+Get-ADUser -Identity felixb -Properties *   | format-list                                        
+#Last we'll take another look at filtering in AD. We can use filtering to find specific information we are looking for in AD. IN this instance, I've been asked to find all of the users in our company that are Part of Marketing and work out of the seattle branch. Through the GUI, this might take a while. With PowerShell, it's quite simple.
+Get-ADUser -filter *| gm
+Get-ADUser -filter * -properties * | gm | more
+Get-ADUser -Property Name,City,Department -Filter *|ft SamAccountName,City,Department -autosize
+Get-ADUser -Property Name,City,Department -Filter {Enabled -eq 'False' -and City -Eq "Seattle"}|ft SamAccountName,City,Department -autosize
+::
+Get-ADUser -Property Name,City,Department -Filter {Department -eq "MKTG" -and City -Eq "Seattle"}|
+ft SamAccountName,City,Department -autosize |
+export-csv  .\SeattleMKTG.csv
+::

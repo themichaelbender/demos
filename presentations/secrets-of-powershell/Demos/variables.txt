@@ -1,0 +1,31 @@
+#Variables in current console
+Get-ChildItem ENV: | more
+
+$env:Computername
+
+Get-Variable | More
+
+#Version of PowerShell
+$PSVersionTable
+
+#Create variable for remote computer
+$ComputerName = “Client02”
+$ComputerName
+Write-Output "The name of the remote computer is $computername"
+Write-Output 'The name of the variable for the remote computername is $computername'
+
+#Store Credential
+$credential = Get-Credential
+$credential
+
+Get-Variable -Name c*
+
+#nter-PSSession -ComputerName $ComputerName -Credential cred
+
+Get-Service -ComputerName $computername
+
+#Member Enumeration of Objects
+Get-CimInstance Win32_OperatingSystem
+Get-CimInstance Win32_OperatingSystem | get-member
+$OS = Get-CimInstance Win32_OperatingSystem | select Caption
+$OSv2 = (Get-CimInstance Win32_OperatingSystem).Caption

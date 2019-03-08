@@ -1,0 +1,69 @@
+#Demo - Finding Info in the Shell
+get-help get-verb | more
+
+get-verb | more
+
+#start https://docs.microsoft.com/en-us/powershell/developer/cmdlet/approved-verbs-for-windows-powershell-commands
+
+get-service -Name M* -ComputerName DC01
+
+Get-Alias | More
+
+get-alias -Definition *service*
+
+gsv -Name M* -ComputerName DC01
+
+help gsv
+
+gsv M* -Computername DC01
+
+gsv M* -Comp DC01
+
+#Demo 2 - Working with Help
+#Runa as Standard
+get-help                           
+get-help | more                                 
+get-help get-service            
+help get-service 
+#Elevate to Admin
+#start-process PowerShell -RunAs -Credential (Get-Credential)
+#update-help
+Man get-service
+help get-service -Examples
+get-help get-service -full
+help get-service -online  
+Help *about*
+
+#Demo 3 - Get Commands
+Help get-command 
+Help Get-Command -examples
+get-command 
+get-command -verb New
+get-command -CommandType Function
+#You are looking for information on firewall rules for remote desktop connections
+    get-verb
+    get-command
+    get-command -Name *Fire*
+    get-command -Name get-*Fire*
+    get-command -Name get-NetFire*
+    help Get-NetFirewallRule 
+    Help get-NetFirewallRule -examples
+    Get-NetFirewallRule | Get-Member
+    Get-NetFirewallRule
+    Get-NetFirewallRule -Name *Remote* 
+    Get-NetFirewallRule -Name *RemoteDesktop* 
+    Get-NetFirewallRule -Name *RemoteDesktop* | Format-Table
+    Get-NetFirewallRule -Name *RemoteDesktop* | Set-NetFirewallRule -Enabled 'True' -Whatif
+    Get-NetFirewallRule -Name *RemoteDesktop* | Format-Table
+
+#Demo 4 - Using History and Transcript
+Help get-history
+Get-history
+Help Start-Transcript
+Md c:\scripts\transcripts
+Start-Transcript -path c:\scripts\transcripts\Transcript1.txt -append
+Get-service | Where-Object -Property Status -eq Stopped
+Get-history
+Stop-transcript
+Notepad c:\scripts\transcripts\transcript1.txt
+
