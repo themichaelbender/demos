@@ -1,0 +1,32 @@
+#Demo 3 - Get Commands
+Help get-command 
+get-Help Get-Command -examples
+get-command 
+get-command -verb New
+get-command -CommandType Function
+#You are looking for information on firewall rules for remote desktop connections
+
+    get-command -Name *Fire*
+    get-command -Name get-*Fire*
+    get-command -Name get-NetFire*
+    help Get-NetFirewallRule 
+    Help get-NetFirewallRule -examples
+    Get-NetFirewallRule | Get-Member
+    Get-NetFirewallRule -Name *Remote* 
+    Get-NetFirewallRule -Name *RemoteDesktop* 
+    Get-NetFirewallRule -Name *RemoteDesktop* | Format-Table
+    Get-NetFirewallRule -Name *RemoteDesktop* | Set-NetFirewallRule -Enabled 'True' -Whatif
+    Get-NetFirewallRule -Name *RemoteDesktop* | Format-Table
+
+#Demo 4 - Using History and Transcript
+Help get-history
+Get-history
+Get-History | out-file .\history.txt
+notepad .\history.txt
+Help Start-Transcript
+Md c:\scripts\transcripts
+Start-Transcript -path c:\scripts\transcripts\Transcript1.txt -append
+Get-service | Where-Object -Property Status -eq Stopped
+Get-history
+Stop-transcript
+Notepad c:\scripts\transcripts\transcript1.txt

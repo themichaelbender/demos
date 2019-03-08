@@ -1,0 +1,99 @@
+#Secrets of PowerShell demos
+
+#Region Demo01: Create an obscene number of active directory users
+
+#Endregion
+
+#Region Demo - Finding Info in the Shell
+
+    get-verb
+    get-command
+    get-command -Name *Fire*
+    get-command -Name get-*Fire*
+    get-command -Name get-NetFire*
+    
+    help *about*
+    get-help about_comment_based_Help
+    help
+    
+    help Get-NetFirewallRule 
+    Help get-NetFirewallRule -examples
+    Get-NetFirewallRule | Get-Member
+    Get-NetFirewallRule
+    Get-NetFirewallRule -Name *Remote* 
+    Get-NetFirewallRule -Name *RemoteDesktop* 
+    Get-NetFirewallRule -Name *RemoteDesktop* | Format-Table
+    Get-NetFirewallRule -Name *RemoteDesktop* | Set-NetFirewallRule -Enabled 'True' -Whatif
+    Get-NetFirewallRule -Name *RemoteDesktop* | Format-Table
+    #Endregion
+
+#Region - Running Commands with Privilege
+    $credential = Get-Credential
+#Endregion
+
+#Region Demo - Objects
+    get-service | Get-Member
+
+    #Call a Method 
+#Endregion
+
+#Region Demo AD
+    #Filtering
+    #Searchbase
+    #Properties
+    Get-ADObject -Filter {(Name -like "WarrenG*") -and (ObjectClass -eq "user")}
+
+    #To get all user objects who have not logged on since January 1, 2007, use the following commands:
+$logonDate = New-Object System.DateTime(2007, 1, 1)
+Get-ADUser -filter { lastLogon -le $logonDate } -SearchBase "ou=Madison,OU=CompanyOU,DC=Company,DC=Pri"
+
+# https://docs.microsoFormat-Table.com/en-us/powershell/module/activedirectory/?view=winserver2012-ps
+#Endregion
+
+#Region Demo Filter LeFormat-Table | Format Right
+
+    #Demo1 Filter on DC01
+    #Demo2 Filter at Client
+#Endregion
+
+#Region Demo Splatting
+#EndRegion
+
+#Region Remoting
+# Implicit Remoting
+    #PowerShell Core
+    $comp = 'DC01'
+    $cred = (Get-Credential)
+
+    #Remoting 
+    Invoke-Command -ComputerName DC01 -Credential $cred -ScriptBlock {
+        Get-aduser -Properties * -Filter * | Select SamAccountName,UserPrincipalName | FT    }
+
+    $PS = New-PSSession -ComputerName 'dc01'
+    Invoke-Command -Session $PS -ScriptBlock {
+            Import-Module -Name ActiveDirectory
+    }
+
+    Export-PSSession -Session $PS -CommandName *-AD* -OutputModule RemAD -AllowClobber -Force
+
+    Remove-PSSession
+
+    Import-Module -Name RemAD
+
+    https://4sysops.com/archives/using-implicit-powershell-remoting-to-import-remote-modules/
+#Endregion
+
+#Region Using VS Code
+ctrl+shiFormat-Table+P
+
+SS
+#Endregion
+
+#Region Console Tours
+# Windows PowerShell Tour
+# PowerShell Core Tour
+#Endregion
+
+#Region Quick Git Primer
+
+#Endregion

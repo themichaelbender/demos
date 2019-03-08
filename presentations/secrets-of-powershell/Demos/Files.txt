@@ -1,0 +1,10 @@
+#Finding Files
+Help get-childitem
+Get-ChildItem -Path M:\ -Recurse
+Get-ChildItem -Path M:\ -Recurse | where Extension -EQ '.PNG'
+Get-ChildItem -Path M:\ -Recurse | where Extension -EQ '.PNG'|FT Name,Directory
+Gcm *copy*
+help Copy-Item
+help Copy-Item -Examples
+copy-item m:\desktopbackgrounds -Destination c:\Backgrounds -Recurse -Verbose
+Get-childitem -path .\Backgrounds -recurse

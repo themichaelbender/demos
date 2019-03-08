@@ -1,0 +1,18 @@
+# Implicit Remoting
+    #PowerShell Core
+    $comp = 'DC01'
+    $cred = (Get-Credential)
+
+    $PS = New-PSSession -ComputerName $comp
+    ::
+    Invoke-Command -Session $PS -ScriptBlock {
+            Import-Module -Name ActiveDirectory
+    }
+::
+    Export-PSSession -Session $PS -CommandName *-AD* -OutputModule RemAD -AllowClobber -Force
+
+    Import-Module -Name RemAD
+
+gcm *user*
+Help get-aduser
+Get-ADUser -Filter "Name -like 'A*'"
