@@ -173,13 +173,13 @@ Another thing is a **word of caution** on using `-WhatIf`. Because it is functio
 So the next time you need to perform some PowerShell tasks, add -whatif before you execute, and stop fearing the `Enter` key.
 
 For more information on the commands used in this post, click on the links below:
-- [Get-ChildItem](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem?WT_id.md=blog-techcommunity-mibender&view=powershell-6)
+- [Get-ChildItem](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem?WT_id.md=itopstalk-blog-mibender&view=powershell-6)
 
-- [Remove-Item](https://docs.microsoft.com/en-us/powershell/module/Microsoft.PowerShell.Management/Remove-Item?WT_id.md=blog-techcommunity-mibender&view=powershell-6)
+- [Remove-Item](https://docs.microsoft.com/en-us/powershell/module/Microsoft.PowerShell.Management/Remove-Item?WT_id.md=itopstalk-blog-mibender&view=powershell-6)
 
-- [Select-Object](https://docs.microsoft.com/en-us/powershell/module/Microsoft.PowerShell.Utility/Select-Object?WT_id.md=blog-techcommunity-mibender&view=powershell-6)
+- [Select-Object](https://docs.microsoft.com/en-us/powershell/module/Microsoft.PowerShell.Utility/Select-Object?WT_id.md=itopstalk-blog-mibender&view=powershell-6)
 
-- [_about_preference_variables](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables?WT_id.md=blog-techcommunity-mibender&view=powershell-6)
+- [_about_preference_variables](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables?WT_id.md=itopstalk-blog-mibender&view=powershell-6)
 
-For more information on PowerShell, check out the docs [here](https://docs.microsoft.com/en-us/powershell/?WT_id.md=blog-techcommunity-mibender)
+For more information on PowerShell, check out the docs [here](https://docs.microsoft.com/en-us/powershell/?WT_id.md=itopstalk-blog-mibender)
 
