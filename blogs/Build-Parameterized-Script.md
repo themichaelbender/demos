@@ -33,8 +33,13 @@ PS >((get-azvm -ResourceGroupName $RSG  ).StorageProfile).OsDisk | Select-Object
 ```
 So that produces exactly the data we are looking for so the next step is to parameterize this by adding the code into a script, and creating a parameter block. A Parameter block defines the parameters that a script uses. Below is a sample :
 ```
-param {}
-
+param (
+    [Parameter(Mandatory=$true)]
+    [string]
+    $RSG                
+)
+((get-azvm -ResourceGroupName $RSG  ).StorageProfile).OsDisk | Select-Object -Property Name,OSType,DiskSizeGB
+```
 In the example above, I want to ensure that the script always gets the required input of the ResourceGroupName so I make the parameter manadatory. If the parameter is not included at execution, PowerShell will prompt for input before it executes.
 
 This is a simple example of begin tool building and autmation in PowerShell.
