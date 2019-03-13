@@ -1,12 +1,13 @@
-#Building a Parameterized Script
+# Building a Parameterized Script
 
 When I talk with people about PowerShell, one of the areas that challenges many new users is creating scripts. In a nutshell,
 *A script is simply a file that contains commands you want to run*
 
 A script doesn't need to be complex, have a bunch of logical constructs, or look like you need a CS degree. A script should be a tool that performs a single task like retrieving a specific set of information from a remote system.
 
-To that end, I want to share a process for building a parameterized script so you can begin experimenting with building your own tools. For years, I have taught a process that works like this:
+To that end, I want to share a process for building a parameterized script so you can begin experimenting with building your own tools, and automate tasks in your environment. For years, I have taught a process that works like this:
 
+#
 You start with a hard-coded command that runs on the PowerShell console, and returns the information you are looking for. Why start here? Because if it doesn't work as a single command in the console, then it won't work in a script.
 
 Once I have a running command, I move it into VS Code, and begin creating variables for any pieces of information that I would input if I were to re-use the command. Things like the Computername parameter come to mind as well as credentials. Remember, variables are a way to story information for our commands, and they will become the basis for our script parameters.
@@ -43,3 +44,20 @@ param (
 In the example above, I want to ensure that the script always gets the required input of the ResourceGroupName so I make the parameter manadatory. If the parameter is not included at execution, PowerShell will prompt for input before it executes.
 
 This is a simple example of begin tool building and autmation in PowerShell.
+
+
+## Common Terms
+
+## Step 1: commands
+
+## Step 2: Use Variables
+
+## Step 3: Parameterized Script
+
+### Launch in
+
+### Alternate code
+```
+Get-AzVMSize -Location EastUS | Where NumberOfCores -EQ '8'`
+```
+Get-AzVMSize -Location EastUS | Where {($_.NumberOfCores -EQ '8') -or ($_.MaxDataDiskCount -eq '16')}
