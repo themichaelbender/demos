@@ -1,0 +1,128 @@
+<h1 id="powershell-basics-don-t-fear-hitting-enter-with-whatif">PowerShell Basics: Don&#39;t Fear Hitting Enter with -WhatIf</h1>
+<p>Chances are you&#39;ve run into this situation. You&#39;ve built a script, or a one-liner, to perform a specific task, but you don&#39;t have a way to thoroughly test it without hitting Enter. That moment before hitting enter can be difficult. Knowing this need, there is a switch available with many PowerShell commands called <code>-whatif</code>. </p>
+<p>With <code>-whatif</code>, PowerShell will run your command in its entirety without executing the actions of the command so no changes occur. It displays a listing of actions to be performed against the affected objects in the console window. This is great for the commands that do not display any output when executed, or if you are unsure of the overall impact of your command.</p>
+<p>How do you know if a command supports <code>-WhatIf?</code> That&#39;s pretty simple. Use <code>get-help</code> to view the syntax of the command.</p>
+<pre><code class="lang-powershell">
+<span class="hljs-string">PS&gt;</span> <span class="hljs-built_in">get-help</span> <span class="hljs-string">remove-item</span>
+</code></pre>
+<pre><code><span class="hljs-symbol">NAME</span>
+    <span class="hljs-symbol">Remove</span>-<span class="hljs-symbol">Item</span>
+
+<span class="hljs-symbol">SYNOPSIS</span>
+    <span class="hljs-symbol">Deletes</span> files and folders.
+
+
+<span class="hljs-symbol">SYNTAX</span>
+    <span class="hljs-symbol">Remove</span>-<span class="hljs-symbol">Item</span> [-<span class="hljs-symbol">Confirm</span>] [-<span class="hljs-symbol">Credential</span> &lt;<span class="hljs-symbol">PSCredential</span>&gt;] [-<span class="hljs-symbol">Exclude</span> &lt;<span class="hljs-symbol">String</span>[]&gt;] [-<span class="hljs-symbol">Filter</span> &lt;<span class="hljs-symbol">String</span>&gt;] [-<span class="hljs-symbol">Force</span>] [-<span class="hljs-symbol">Include</span>
+    &lt;<span class="hljs-symbol">String</span>[]&gt;] -<span class="hljs-symbol">LiteralPath</span> &lt;<span class="hljs-symbol">String</span>[]&gt; [-<span class="hljs-symbol">Recurse</span>] [-<span class="hljs-symbol">Stream</span> &lt;<span class="hljs-symbol">String</span>[]&gt;] [-<span class="hljs-symbol">UseTransaction</span>] [-<span class="hljs-symbol">WhatIf</span>]
+    [&lt;<span class="hljs-symbol">CommonParameters</span>&gt;]
+
+    <span class="hljs-symbol">Remove</span>-<span class="hljs-symbol">Item</span> [-<span class="hljs-symbol">Path</span>] &lt;<span class="hljs-symbol">String</span>[]&gt; [-<span class="hljs-symbol">Confirm</span>] [-<span class="hljs-symbol">Credential</span> &lt;<span class="hljs-symbol">PSCredential</span>&gt;] [-<span class="hljs-symbol">Exclude</span> &lt;<span class="hljs-symbol">String</span>[]&gt;] [-<span class="hljs-symbol">Filter</span> &lt;<span class="hljs-symbol">String</span>&gt;]
+    [-<span class="hljs-symbol">Force</span>] [-<span class="hljs-symbol">Include</span> &lt;<span class="hljs-symbol">String</span>[]&gt;] [-<span class="hljs-symbol">Recurse</span>] [-<span class="hljs-symbol">Stream</span> &lt;<span class="hljs-symbol">String</span>[]&gt;] [-<span class="hljs-symbol">UseTransaction</span>] [-<span class="hljs-symbol">WhatIf</span>] [&lt;<span class="hljs-symbol">CommonParameters</span>&gt;]
+
+    <span class="hljs-symbol">Remove</span>-<span class="hljs-symbol">Item</span> [-<span class="hljs-symbol">Stream</span> &lt;string&gt;] [&lt;<span class="hljs-symbol">CommonParameters</span>&gt;]
+</code></pre><p>As you can see, <code>[-WhatIf]</code> is listed in the syntax for the command. Also it will be available as a tab-complete option when entering the command. If you do happen to enter it with a command that doesn&#39;t support it, you&#39;ll receive the following error:</p>
+<pre><code class="lang-powershell">
+<span class="hljs-string">PS </span>C:\<span class="hljs-string">Users\</span><span class="hljs-string">mibender&gt;</span> <span class="hljs-built_in">get-help</span> -<span class="hljs-string">Whatif</span>
+</code></pre>
+<pre><code><span class="hljs-string">Get-Help </span>: A <span class="hljs-string">parameter </span><span class="hljs-string">cannot </span><span class="hljs-string">be </span><span class="hljs-string">found </span><span class="hljs-string">that </span><span class="hljs-string">matches </span><span class="hljs-string">parameter </span><span class="hljs-string">name </span><span class="hljs-string">'Whatif'</span>.
+<span class="hljs-string">At </span><span class="hljs-string">line:1 </span><span class="hljs-string">char:10
+</span>+ <span class="hljs-built_in">get-help</span> -<span class="hljs-string">Whatif
+</span>+          ~~~~~~~
+    + <span class="hljs-string">CategoryInfo </span>         : <span class="hljs-string">InvalidArgument:</span> (:) [<span class="hljs-string">Get-Help]</span>, <span class="hljs-string">ParameterBindingException
+</span>    + <span class="hljs-string">FullyQualifiedErrorId </span>: <span class="hljs-string">NamedParameterNotFound,</span><span class="hljs-string">Microsoft.</span><span class="hljs-string">PowerShell.</span><span class="hljs-string">Commands.</span><span class="hljs-string">GetHelpCommand</span>
+</code></pre><p>Now let&#39;s see an example of how this works. A common scenario is needing to clean up a file share by file type. In this case, I want to find all of the video files in an MP4 format and remove them from my <code>c:\recordings</code> directory. Here&#39;s the process you would run through:</p>
+<p>First, let&#39;s find all of the MP4 files with  <code>Get-ChildItem</code>:</p>
+<pre><code class="lang-powershell">
+PS&gt; <span class="hljs-keyword">Get</span>-ChildItem -<span class="hljs-keyword">File</span> *.MP4 -Recurse -LiteralPath <span class="hljs-keyword">C</span>:\Recordings\
+</code></pre>
+<pre><code>
+    <span class="hljs-attribute">Directory</span>: C:\Recordings\car-Talks\Attitude-Control
+
+<span class="brainfuck"><span class="hljs-comment">Mode</span>                <span class="hljs-comment">LastWriteTime</span>         <span class="hljs-comment">Length</span> <span class="hljs-comment">Name</span>
+<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span>                <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span>         <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span>
+<span class="hljs-literal">-</span><span class="hljs-comment">a</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span>         <span class="hljs-comment">9/7/2018</span>   <span class="hljs-comment">3:47</span> <span class="hljs-comment">PM</span>       <span class="hljs-comment">58188931</span> <span class="hljs-comment">Attitude</span><span class="hljs-literal">-</span><span class="hljs-comment">Control</span><span class="hljs-string">.</span><span class="hljs-comment">mp4</span>
+
+    <span class="hljs-comment">Directory:</span> <span class="hljs-comment">C:\Recordings\car</span><span class="hljs-literal">-</span><span class="hljs-comment">Talks\Personal</span><span class="hljs-literal">-</span><span class="hljs-comment">KanBan</span>
+
+<span class="hljs-comment">Mode</span>                <span class="hljs-comment">LastWriteTime</span>         <span class="hljs-comment">Length</span> <span class="hljs-comment">Name</span>
+<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span>                <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span>         <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span>
+<span class="hljs-literal">-</span><span class="hljs-comment">a</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span>        <span class="hljs-comment">10/5/2018</span>   <span class="hljs-comment">1:56</span> <span class="hljs-comment">PM</span>       <span class="hljs-comment">45875317</span> <span class="hljs-comment">Personal</span><span class="hljs-literal">-</span><span class="hljs-comment">kanBan</span><span class="hljs-string">.</span><span class="hljs-comment">mp4</span>
+
+    <span class="hljs-comment">Directory:</span> <span class="hljs-comment">C:\Recordings\car</span><span class="hljs-literal">-</span><span class="hljs-comment">Talks\Redmond</span><span class="hljs-literal">-</span><span class="hljs-comment">Week</span><span class="hljs-literal">-</span><span class="hljs-comment">1\Redmond</span><span class="hljs-literal">-</span><span class="hljs-comment">Week</span><span class="hljs-literal">-</span><span class="hljs-comment">1</span>
+
+<span class="hljs-comment">Mode</span>                <span class="hljs-comment">LastWriteTime</span>         <span class="hljs-comment">Length</span> <span class="hljs-comment">Name</span>
+<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span>                <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span>         <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span>
+<span class="hljs-literal">-</span><span class="hljs-comment">a</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span>         <span class="hljs-comment">8/3/2018</span>   <span class="hljs-comment">9:01</span> <span class="hljs-comment">AM</span>       <span class="hljs-comment">19616170</span> <span class="hljs-comment">Redmond</span><span class="hljs-literal">-</span><span class="hljs-comment">Week</span><span class="hljs-literal">-</span><span class="hljs-comment">1</span><span class="hljs-string">.</span><span class="hljs-comment">mp4</span></span>
+</code></pre><p>So that shows us all of the MP4 files, but I&#39;d like to see them in a standard tables format with just their name and directory location and not separated by directory. To do that, we use <code>Select-Object</code>:</p>
+<pre><code class="lang-powershell">
+PS&gt; Get-ChildItem -File *.MP4 -Recurse -LiteralPath C:<span class="hljs-symbol">\R</span>ecordings<span class="hljs-symbol">\ </span>| Select-Object Name,Directory
+
+Name                         Directory
+----                         ---------
+Attitude-Control.mp4         C:<span class="hljs-symbol">\R</span>ecordings<span class="hljs-symbol">\c</span>ar-Talks<span class="hljs-symbol">\A</span>ttitude-Control
+Personal-kanBan.mp4          C:<span class="hljs-symbol">\R</span>ecordings<span class="hljs-symbol">\c</span>ar-Talks<span class="hljs-symbol">\P</span>ersonal-KanBan
+Redmond-Week-1.mp4           C:<span class="hljs-symbol">\R</span>ecordings<span class="hljs-symbol">\c</span>ar-Talks<span class="hljs-symbol">\R</span>edmond-Week-1<span class="hljs-symbol">\R</span>edmond-Week-1
+SoundTest1.mp4               C:<span class="hljs-symbol">\R</span>ecordings<span class="hljs-symbol">\c</span>ar-Talks<span class="hljs-symbol">\S</span>oundtest
+</code></pre>
+<p>That looks better. What I did was use the pipeline and <code>select-object</code> to choose just the properties I wanted from the objects output from the initial command</p>
+<p>After I&#39;ve reviewed the list, I think that it includes all the items I want to remove. But being paranoid, I&#39;d really like to know that it is going to remove just those files in a specific directory, and not all the files. That&#39;s where <code>-WhatIf</code> comes in with the <code>remove-item</code> command:</p>
+<pre><code class="lang-powershell">
+PS&gt; <span class="hljs-keyword">Get</span>-ChildItem -<span class="hljs-keyword">File</span> *.MP4 -Recurse -LiteralPath <span class="hljs-keyword">C</span>:\Recordings\ | <span class="hljs-keyword">Remove</span>-<span class="hljs-keyword">Item</span> -WhatIf
+</code></pre>
+<pre><code>
+What <span class="hljs-keyword">if</span>: Performing <span class="hljs-keyword">the</span> operation <span class="hljs-string">"Remove File"</span> <span class="hljs-keyword">on</span> <span class="hljs-title">target</span> <span class="hljs-string">"C:\Recordings\car-Talks\Attitude-Control\Attitude-Control.mp4"</span>.
+What <span class="hljs-keyword">if</span>: Performing <span class="hljs-keyword">the</span> operation <span class="hljs-string">"Remove File"</span> <span class="hljs-keyword">on</span> <span class="hljs-title">target</span> <span class="hljs-string">"C:\Recordings\car-Talks\Personal-KanBan\Personal-kanBan.mp4"</span>.
+What <span class="hljs-keyword">if</span>: Performing <span class="hljs-keyword">the</span> operation <span class="hljs-string">"Remove File"</span> <span class="hljs-keyword">on</span> <span class="hljs-title">target</span> <span class="hljs-string">"C:\Recordings\car-Talks\Redmond-Week-1\Redmond-Week-1\Redmond-Week-1.mp4"</span>.
+What <span class="hljs-keyword">if</span>: Performing <span class="hljs-keyword">the</span> operation <span class="hljs-string">"Remove File"</span> <span class="hljs-keyword">on</span> <span class="hljs-title">target</span> <span class="hljs-string">"C:\Recordings\car-Talks\Soundtest\SoundTest1.mp4"</span>.
+What <span class="hljs-keyword">if</span>: Performing <span class="hljs-keyword">the</span> operation <span class="hljs-string">"Remove File"</span> <span class="hljs-keyword">on</span> <span class="hljs-title">target</span> <span class="hljs-string">"C:\Recordings\Microsoft\Content-Development-AMA\Content-Development-AMA.mp4"</span>.
+What <span class="hljs-keyword">if</span>: Performing <span class="hljs-keyword">the</span> operation <span class="hljs-string">"Remove File"</span> <span class="hljs-keyword">on</span> <span class="hljs-title">target</span> <span class="hljs-string">"C:\Recordings\Microsoft\MITT\HYB10\HYB10-Demos-DryRun1-0.mp4"</span>.
+What <span class="hljs-keyword">if</span>: Performing <span class="hljs-keyword">the</span> operation <span class="hljs-string">"Remove File"</span> <span class="hljs-keyword">on</span> <span class="hljs-title">target</span> <span class="hljs-string">"C:\Recordings\Microsoft\MITT\HYB10\HYB10-Demos-DryRun1-1.mp4"</span>.
+What <span class="hljs-keyword">if</span>: Performing <span class="hljs-keyword">the</span> operation <span class="hljs-string">"Remove File"</span> <span class="hljs-keyword">on</span> <span class="hljs-title">target</span> <span class="hljs-string">"C:\Recordings\Microsoft\MITT\HYB10\HYB10-Demos-DryRun1-2.mp4"</span>.
+What <span class="hljs-keyword">if</span>: Performing <span class="hljs-keyword">the</span> operation <span class="hljs-string">"Remove File"</span> <span class="hljs-keyword">on</span> <span class="hljs-title">target</span> <span class="hljs-string">"C:\Recordings\Microsoft\MITT\HYB10\HYB10-Demos-DryRun1-3.mp4"</span>.
+What <span class="hljs-keyword">if</span>: Performing <span class="hljs-keyword">the</span> operation <span class="hljs-string">"Remove File"</span> <span class="hljs-keyword">on</span> <span class="hljs-title">target</span> <span class="hljs-string">"C:\Recordings\Microsoft\MITT\HYB10\DryRuns\HYB10-Dress-Run-GSL-01.mp4"</span>.
+What <span class="hljs-keyword">if</span>: Performing <span class="hljs-keyword">the</span> operation <span class="hljs-string">"Remove File"</span> <span class="hljs-keyword">on</span> <span class="hljs-title">target</span> <span class="hljs-string">"C:\Recordings\Microsoft\MITT\HYB10\DryRuns\HYB10-DryRun-01.mp4"</span>.
+What <span class="hljs-keyword">if</span>: Performing <span class="hljs-keyword">the</span> operation <span class="hljs-string">"Remove File"</span> <span class="hljs-keyword">on</span> <span class="hljs-title">target</span> <span class="hljs-string">"C:\Recordings\Microsoft\MITT\HYB20\HYB20-Demo-SecureScore.mp4"</span>.
+</code></pre><p>Based on the output, I&#39;ve verified that on the MP4 files in the c:\recordings directory are being removed. Now I can go back to my command and execute it by removing the <code>-WhatIf</code> switch.</p>
+<p>Now, let&#39;s say it&#39;s 2am in your time zone, and you need to perform multiple tasks through the PowerShell Console. If you are like me, 2am is not my &#39;peak productivity&#39; hour so making mistakes, like forgetting the <code>-WhatIf</code> switch, could be dangerous. For those instances, you can modify the $WhatIfPreference variable in your console like this:</p>
+<pre><code class="lang-powershell">
+PS&gt; $whatifpreference
+<span class="hljs-keyword">False</span>
+PS&gt; $whatifpreference = <span class="hljs-string">'True'</span>
+PS&gt; $whatifpreference
+<span class="hljs-keyword">True</span>
+PS&gt; <span class="hljs-keyword">Get</span>-ChildItem -<span class="hljs-keyword">File</span> *.MP4 -Recurse -LiteralPath <span class="hljs-keyword">C</span>:\Recordings\ | <span class="hljs-keyword">Remove</span>-<span class="hljs-keyword">Item</span>
+</code></pre>
+<pre><code>
+What <span class="hljs-keyword">if</span>: Performing <span class="hljs-keyword">the</span> operation <span class="hljs-string">"Remove File"</span> <span class="hljs-keyword">on</span> <span class="hljs-title">target</span> <span class="hljs-string">"C:\Recordings\car-Talks\Attitude-Control\Attitude-Control.mp4"</span>.
+What <span class="hljs-keyword">if</span>: Performing <span class="hljs-keyword">the</span> operation <span class="hljs-string">"Remove File"</span> <span class="hljs-keyword">on</span> <span class="hljs-title">target</span> <span class="hljs-string">"C:\Recordings\car-Talks\Personal-KanBan\Personal-kanBan.mp4"</span>.
+What <span class="hljs-keyword">if</span>: Performing <span class="hljs-keyword">the</span> operation <span class="hljs-string">"Remove File"</span> <span class="hljs-keyword">on</span> <span class="hljs-title">target</span> <span class="hljs-string">"C:\Recordings\car-Talks\Redmond-Week-1\Redmond-Week-1\Redmond-Week-1.mp4"</span>.
+What <span class="hljs-keyword">if</span>: Performing <span class="hljs-keyword">the</span> operation <span class="hljs-string">"Remove File"</span> <span class="hljs-keyword">on</span> <span class="hljs-title">target</span> <span class="hljs-string">"C:\Recordings\car-Talks\Soundtest\SoundTest1.mp4"</span>.
+What <span class="hljs-keyword">if</span>: Performing <span class="hljs-keyword">the</span> operation <span class="hljs-string">"Remove File"</span> <span class="hljs-keyword">on</span> <span class="hljs-title">target</span> <span class="hljs-string">"C:\Recordings\Microsoft\Content-Development-AMA\Content-Development-AMA.mp4"</span>.
+</code></pre><p>When the command to remove all the files is run and I do not include -whatif since it&#39;s 2am, it defaults to running ALL commands with <code>-WhatIf</code>.
+Now if you actually want to run the command and remove the files, you add the <code>-WhatIf</code> switch parameter and specify <code>:$false</code> like this:</p>
+<pre><code class="lang-powershell">
+PS&gt; <span class="hljs-keyword">Get</span>-ChildItem -<span class="hljs-keyword">File</span> *.MP4 -LiteralPath <span class="hljs-keyword">C</span>:\Recordings\Test-Recording\ | <span class="hljs-keyword">Remove</span>-<span class="hljs-keyword">Item</span> -WhatIf:$false -<span class="hljs-keyword">Verbose</span>
+</code></pre>
+<pre><code>
+VERBOSE: Performing the operation "Remove File" on target "C:<span class="hljs-tag">\<span class="hljs-name">Recordings</span></span><span class="hljs-tag">\<span class="hljs-name">Test</span></span>-Recording<span class="hljs-tag">\<span class="hljs-name">Test</span></span>-Take-SA.mp4".
+
+```powershell
+
+PS CMD&gt; Get-ChildItem -File *.MP4 -LiteralPath C:<span class="hljs-tag">\<span class="hljs-name">Recordings</span></span><span class="hljs-tag">\<span class="hljs-name">Test</span></span>-Recording<span class="hljs-tag">\<span class="hljs-name">
+</span></span>PS CMD&gt;
+</code></pre><p>One thing to remember with this and other preference variables you define in the console is they only maintain the setting in your current shell. When you close and re-open PowerShell, the preference will reset.</p>
+<p>Another thing is a <strong>word of caution</strong> on using <code>-WhatIf</code>. Because it is functionality that is added into commands, the implementer may not implement it properly. I&#39;ve never run into issues with Microsoft-built commands using <code>-WhatIf</code> like Microsoft Exchange, Active Directory, and many of the built-in commands I use below. However, I cannot speak for code samples you may find in the wild. To be safe, you should test -whatif against a smaller pool of targets vs. trying to modify every Exchange mailbox in your organization.</p>
+<p>So the next time you need to perform some PowerShell tasks, add -whatif before you execute, and stop fearing the <code>Enter</code> key.</p>
+<p>For more information on the commands used in this post, click on the links below:</p>
+<ul>
+<li><p><a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem?WT_id.md=blog-techcommunity-mibender&amp;view=powershell-6">Get-ChildItem</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/powershell/module/Microsoft.PowerShell.Management/Remove-Item?WT_id.md=blog-techcommunity-mibender&amp;view=powershell-6">Remove-Item</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/powershell/module/Microsoft.PowerShell.Utility/Select-Object?WT_id.md=blog-techcommunity-mibender&amp;view=powershell-6">Select-Object</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables?WT_id.md=blog-techcommunity-mibender&amp;view=powershell-6">_about_preference_variables</a></p>
+</li>
+</ul>
+<p>For more information on PowerShell, check out the docs <a href="https://docs.microsoft.com/en-us/powershell/?WT_id.md=blog-techcommunity-mibender">here</a></p>
