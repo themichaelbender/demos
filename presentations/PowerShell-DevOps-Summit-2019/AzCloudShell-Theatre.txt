@@ -1,0 +1,3 @@
+# Master the Cloud with Azure Cloud Shell
+
+You already know PowerShell is the key to on-premises workloads. Now take the power of the shell into the Cloud with Azure Cloud Shell. This demo-packed session will introduce you to Azure Cloud Shell, and provide plenty of tips to be immediately effective in using the command line to manage Whether you prefer Bash or PowerShell, both are supported to deploy and manage your resources in Azure. 
