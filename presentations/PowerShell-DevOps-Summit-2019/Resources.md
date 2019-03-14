@@ -1,4 +1,18 @@
 # Azure Cloud Shell Resources
+## Meeting Important 
+* Dismount-CloudDrive
+  * Reset Storage 
+  * AccountAdvance 
+  * Settings
+* Local Experience
+  * Requires Port
+  * VS Code
+  * Azure Storage Explorer
+* Possible Exchange Demos
+* Option in Cloud Shell for Tab Complete
+  * Set-PSReadLine Look at edit mode 'Notes
+
+
 
 ## Commands
 
@@ -22,3 +36,9 @@ code
   10 ((get-azvm).StorageProfile).Datadisks
   ```
   [VS Code in Cloud Shell Blog](https://azure.microsoft.com/en-us/blog/cloudshelleditor/)
+
+  ## Videos and Other
+  [Automate Tasks using Azure Cloud Shell](https://www.youtube.com/watch?v=GwT1j3JHSgw)
+  [Azure Cloud Shell](https://www.youtube.com/watch?v=8Hicsru9x8o&t=293s)
+
+  [Master Azure Cloud Shell by Thomas Maurer](https://www.thomasmaurer.ch/2019/01/azure-cloud-shell/)
