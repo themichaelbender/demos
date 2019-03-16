@@ -14,33 +14,41 @@ Once I have a running command, I move it into VS Code, and begin creating variab
 
 Now, we want to make this script work like the commands we are use to using in PowerShell. Parameterizing a script allows the script to be run along with parameters and input values at time of execution instead of putting the values in the script, or using a technique like Read-Host to get input. Below is what that would look like for a script I created for demos called Show-StoppedServices.ps1 that retrieves the stopped services from remote systems.
 
-```
+```PowerShell
 .\Show-StoppedServices.ps1 -ComputerName DC01 -Verbose
 
 ```
 Let's say I need to perform a task like retrieving the a few pieces of information from a number of remote services. In this task, I want to see the size of the virtual disks of all of my VMs in Azure in a specific resource group. 
 
 To start out, I log into shell.azure.com to access my Azure resources. I issue the following command to see the size of the VHDs of all of my VMS in Azure.
-```
+```PowerShell
 ((get-azvm -ResourceGroupName HBY20-asc-demo  ).StorageProfile).Datadisks
 
 ((get-azvm -ResourceGroupName $RSG  ).StorageProfile).OsDisk | Select-Object -Property Name,OSType,DiskSizeGB
 
 ```
+
 As this is a fairly complicated one-liner, no one wants to type this so let's look at first creating variables for the command. Since we want the command to use a sprecific resource group, the -ResourceGroupName parameter should become a variable so let's try this:
-```
+
+```powershell
+
 PS >$RSG = 'HBY20-asc-demo'
 PS >((get-azvm -ResourceGroupName $RSG  ).StorageProfile).OsDisk | Select-Object -Property Name,OSType,DiskSizeGB
+
 ```
+
 So that produces exactly the data we are looking for so the next step is to parameterize this by adding the code into a script, and creating a parameter block. A Parameter block defines the parameters that a script uses. Below is a sample :
-```
+
+```powershell
 param (
     [Parameter(Mandatory=$true)]
     [string]
     $RSG                
 )
 ((get-azvm -ResourceGroupName $RSG  ).StorageProfile).OsDisk | Select-Object -Property Name,OSType,DiskSizeGB
+
 ```
+
 In the example above, I want to ensure that the script always gets the required input of the ResourceGroupName so I make the parameter manadatory. If the parameter is not included at execution, PowerShell will prompt for input before it executes.
 
 This is a simple example of begin tool building and autmation in PowerShell.
@@ -57,7 +65,15 @@ This is a simple example of begin tool building and autmation in PowerShell.
 ### Launch in
 
 ### Alternate code
-```
+
+```PowerShell
+
 Get-AzVMSize -Location EastUS | Where NumberOfCores -EQ '8'`
+
 ```
+
+```PowerShell
+
 Get-AzVMSize -Location EastUS | Where {($_.NumberOfCores -EQ '8') -or ($_.MaxDataDiskCount -eq '16')}
+
+```
