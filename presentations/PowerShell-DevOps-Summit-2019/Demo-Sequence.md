@@ -17,10 +17,13 @@
   * Azure Storage Explorer
   * AZCopy 
 * Using SSH for remoting to VMs
-* Working with Git Repos 
+* Working with Git Repos
+  * Clone repo
+  * Deploy the following with git:
+    *  https://azure.microsoft.com/en-us/resources/templates/201-aci-wordpress-vnet/
 * Using the Cloud Shell editor (Monaco)
   * Walk through building a script from command and save to Cloud Shell editor
   * Upload and modify existing script in Editor
-* Deploy application group with 
+* Deploy application group with GIT 
 * (optional) Use Managed Service Identity (MSI) in Azure Cloud Shell
 * 
