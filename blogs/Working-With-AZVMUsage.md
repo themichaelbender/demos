@@ -1,7 +1,6 @@
 # Using Get-AzVMSize 
 
-Finding the right virtual machine for you needs can be difficult especially with all of the options available. And chances are, new options are coming day so you may need to regularly check the VMs available. Sure, you could do this through the GUI, but using PowerShell makes it quick and easy to see all of the VM types so you can get to building.
-
+Finding the right virtual machine for you needs can be difficult especially with all of the options available. And chances are, new options are coming day so you may need to regularly check the VMs available. Sure, you could do this through the GUI, but using PowerShell makes it quick and easy to see all of the VM types so you can get to building. aA
 
 ## General use
 
