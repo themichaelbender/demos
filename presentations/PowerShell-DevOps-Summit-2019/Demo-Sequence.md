@@ -16,6 +16,7 @@
 * Uploading resources to Azure File Storage for use in Azure Cloud Shell
   * Azure Storage Explorer
   * AZCopy 
+  * https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-powershell
 * Using SSH for remoting to VMs
 * Working with Git Repos
   * Clone repo
