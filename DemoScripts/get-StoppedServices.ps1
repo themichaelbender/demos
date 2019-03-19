@@ -1,0 +1,1 @@
+get-service | Where-Object Status -EQ 'stopped'
