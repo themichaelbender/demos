@@ -12,7 +12,9 @@
 * Option in Cloud Shell for Tab Complete
   * Set-PSReadLine Look at edit mode 'Notes
 
+MOTD: To edit files in the shell, type: code, vim, emacs, vi or nano
 
+MOTD: Scripts installed with 'Install-Script' can be run from the shell
 
 ## Commands
 
