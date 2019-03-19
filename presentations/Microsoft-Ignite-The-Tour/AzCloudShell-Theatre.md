@@ -7,6 +7,8 @@ You already know PowerShell is the key to on-premises workloads. Now take the po
 Deploy Windows VM
 Deploy Linux VM
 Azure Account Extension -VS Code
+
+Shell with GIT already authenticated
 ## Demos
 
 1. Intro to cloud shell (2)
@@ -76,6 +78,44 @@ get-azResource -ResourceGroupName 'cloudshell-demo-02'
 get-azResource -ResourceGroupName 'cloudshell-demo-02' | Format-Table
 ```
 2. Use GIT to clone demo folder w/ Scripts (2)
-   1. 
+   1. 42 cd $Home
+  43 dir
+  44 cd ./clouddrive/
+  45 dir
+  46 mkdir github
+  47 cd ./github/
+  48 git clone https://github.com/themichaelbender-ms/demos.git
+  49 git status
+  50 dir
+  51 cd demos
+  52 git status
+  53 git branch
+  54 git checkout -b demobranch-cs
+  55 code
+  56 dir
+  57 git status
+  58 git pull
+  59 git checkout master
+  60 git pull
+  61 git status
+  62 git checkout demobranch-cs
+  63 git status
+  64 dir
+  65 git checkout master
+  66 dir
+  67 git branch -d demobranch-cs
+  68 git branch -b demo-cs
+  69 git checkout -b demo-cs
+  70 git status
+  71 dir
+  72 cd ./demoscripts
+  73 dir
+  74 code ./get-stoppedServices.ps1
+  75 git status
+  76 git add .
+  77 git commit -m 'Script Update'
+  78 git commit -m 'Script Update' -a
+  79 git push
+  80 git push --set-upstream origin demo-cs
 3.  Show Microsoft Learn module on X and show Azure Cloud Shell (2)
 4.  Close with Slide of iphone screen accessing cloud shell (1)
