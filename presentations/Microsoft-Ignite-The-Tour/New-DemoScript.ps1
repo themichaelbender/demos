@@ -60,19 +60,23 @@ Invoke-AzVMCommand -Name tmdemowin-01 -ResourceGroupName TM-DEMO-CLOUDSHELL-RG -
 Invoke-AzVMCommand -Name $lnx -ResourceGroupName $rsg -ScriptBlock {uname -a} -UserName michael -KeyFilePath /home/michael/.ssh/id_rsa
 
 # Connect to VM with Remoting
-Enter-AzVM -name tmdemowin-01 -ResourceGroupName TM-DEMO-CLOUDSHELL-RG -Credential $cred
 
-```
+Enter-AzVM -name $win -ResourceGroupName $rsg -Credential $cred
+whoami
+get-service | where status -eq stopped
 
 ## Demo 4 - Deploying Resources and GIT
-This set of demos covers deploying resources in Azure using the PowerShell and GIT.
+New-AzResourceGroup -Name 'cloudshell-demo-02' -location 'westeurope'
 
-```PowerShell
-New-AzResourceGroup -Name summitRSG -location centralus
+get-azResource -ResourceGroupName 'cloudshell-demo-02'
 
-Get-AzResource
+New-AzureRmResourceGroupDeployment -Name 'cloudshell-demo' -ResourceGroupName 'cloudshell-demo-02' -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-automatic-static-ip/azuredeploy.json   -AsJob
 
-New-AzureRmResourceGroupDeployment -Name summit-talk-VMDeployment -ResourceGroupName summitRSG -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-automatic-static-ip/azuredeploy.json   -AsJob
+get-job | format-list
+
+get-azResource -ResourceGroupName 'cloudshell-demo-02'
+
+get-azResource -ResourceGroupName 'cloudshell-demo-02' | Format-Table
 
 # Setting up GIT
 
@@ -94,3 +98,29 @@ git push -u origin demo-cs
 
 
 ```
+# Extra Stuff 
+
+
+2. Use GIT to clone demo folder w/ Scripts (2)
+   1. 42 cd $Home
+  43 dir
+  44 cd ./clouddrive/
+  45 dir
+  46 mkdir github
+  47 cd ./github/
+  48 git clone https://github.com/themichaelbender-ms/demos.git
+  49 git status
+  50 dir
+  51 cd demos
+  52 git status
+  53 git branch
+  54 git checkout -b demobranch-cs
+  71 dir
+  72 cd ./demoscripts
+  73 dir
+  74 code ./get-stoppedServices.ps1
+  78 git commit -m 'Script Update' -a
+ git remote set-url origin git@github.com:themichaelbender-ms/demos.git
+   79 git push -u origin demobranch-cs
+3.  Show Microsoft Learn module on X and show Azure Cloud Shell (2)
+4.  Close with Slide of iphone screen accessing cloud shell (1)
