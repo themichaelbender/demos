@@ -1,0 +1,100 @@
+## THR2568 - Master the Cloud with Azure Cloud Shell
+
+## Code
+
+
+## Pre-Reqs
+[Azure Subscrition](https://azure.microsoft.com/en-us/free/?WT.mc_id=MSIgniteTheTour-github-mibender)
+
+Deploy Windows VM
+Deploy Linux VM
+
+## Demo 1 - Exploring the Shell
+This series of demos includes the setup, configuration, and exploration of Azure Cloud Shell. 
+
+dir
+cd mibender
+cd ./VirtualMachines/
+dir
+get-AzVm -name vm-linux-01 | fl
+get-AzVm -name vm-linux-01 | select -ExpandProperty StorageProfile
+(get-AzVm -name vm-linux-01 | select -ExpandProperty StorageProfile).ImageReference
+15 get-command get-AzVM*
+18 get-command *AzureAD* | more
+19 Get-AzureADUser
+20 cd $Home
+21 dir
+22 cd windows azure powershell
+23 cd 'windows azure powershell'
+24 cd clouddrive
+25 dir
+26 mkdir DemoDirectory
+27 cd DemoDirectory
+28 dir
+29 code
+```PowerShell
+
+```
+## Demo 2 -Working with Visual Studio Code
+
+## Demo 3 - Remoting into VMs
+This set of demos covers remoting into VMs in Azure.
+
+```PowerShell
+# View commands in Azure Cloud Shell for Remoting
+gcm *azVMPS*, Invoke-AzVMc*,Enter-AzVm*
+
+# Variables
+$win =
+$lnx =
+$rsg =
+$cred = get-credential
+
+# Windows VM
+Enable-AzVMPSRemoting -Name $win -ResourceGroupName $rsg -Protocol https -OsType Windows
+
+# Linux VM
+Enable-AzVMPSRemoting -Name $lnx -ResourceGroupName $rsg -Protocol ssh -OsType Linux
+
+# Fan Out to VMs
+# Windows VM
+Invoke-AzVMCommand -Name tmdemowin-01 -ResourceGroupName TM-DEMO-CLOUDSHELL-RG -ScriptBlock {get-service win*} -Credential $cred
+
+# Linux VM
+Invoke-AzVMCommand -Name $lnx -ResourceGroupName $rsg -ScriptBlock {uname -a} -UserName michael -KeyFilePath /home/michael/.ssh/id_rsa
+
+# Connect to VM with Remoting
+Enter-AzVM -name tmdemowin-01 -ResourceGroupName TM-DEMO-CLOUDSHELL-RG -Credential $cred
+
+```
+
+## Demo 4 - Deploying Resources and GIT
+This set of demos covers deploying resources in Azure using the PowerShell and GIT.
+
+```PowerShell
+New-AzResourceGroup -Name summitRSG -location centralus
+
+Get-AzResource
+
+New-AzureRmResourceGroupDeployment -Name summit-talk-VMDeployment -ResourceGroupName summitRSG -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-automatic-static-ip/azuredeploy.json   -AsJob
+
+# Setting up GIT
+
+cd $home/clouddrive/michael/
+mkdir github
+cd ./github
+git clone <Path to repo>
+# Set remote url to repository; SSH must be created and stored
+git remote set-url origin git@github.com:themichaelbender-ms/demos.git
+git status
+git branch
+git checkout -b demo-cs
+code ./New-DemoScript.ps1 # Create a new script, add code, and save
+git status
+git add . # Adds all changes
+git commit -m 'New Script'
+git status
+git push -u origin demo-cs
+
+
+```
