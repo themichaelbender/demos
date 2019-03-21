@@ -24,17 +24,26 @@ Shell with GIT already authenticated
    4. Upload Script
    5. Open code with {}
 4. Exploring the Shell
-   1. Dir to view subs
+   1. Dir to view subs & Resources
    2. Discuss Azure Drive
    3. Explore down to VMs
+   4. Demo: View ImageReference for VM
 5. find Az commands (2)
    1. Find AZ* and AzureAD*
+   2. Demo: get-command get-AzVM*
 6. Explore to $Home
    1. create directory
+      1. PS> mk
    2. Create script in code and save here
-   3. Open script
+   3. 
+   4. Open script
 7. Edit Script in VS Code Editor (2)
-8. Remote into VMs
+8. View and Download History
+   1. get-History
+   2. Get-History | export-csv History.csv
+   3. Manage File Share > Download via Azure Portal
+9.  Remote into VMs
+   4. gcm *azVMPS*, Invoke-AzVMc*,Enter-AzVm*
 
 ```PowerShell
 # Enable VMs
@@ -43,10 +52,10 @@ $lnx = 'vm-linux-01'
 $rsg = 'mitt-cloudshell-demo'
 $cred = Get-credential
 
-# Windows VM
+# Enable Azure Remoting - Windows VM
 Enable-AzVMPSRemoting -Name $win -ResourceGroupName $rsg -Protocol https -OsType Windows
 
-# Linux VM
+# Enable Azure Remoting - Linux VM
 Enable-AzVMPSRemoting -Name $lnx -ResourceGroupName $rsg -Protocol ssh -OsType Linux
 
 # Fan Out to VMs
@@ -91,31 +100,12 @@ get-azResource -ResourceGroupName 'cloudshell-demo-02' | Format-Table
   52 git status
   53 git branch
   54 git checkout -b demobranch-cs
-  55 code
-  56 dir
-  57 git status
-  58 git pull
-  59 git checkout master
-  60 git pull
-  61 git status
-  62 git checkout demobranch-cs
-  63 git status
-  64 dir
-  65 git checkout master
-  66 dir
-  67 git branch -d demobranch-cs
-  68 git branch -b demo-cs
-  69 git checkout -b demo-cs
-  70 git status
   71 dir
   72 cd ./demoscripts
   73 dir
   74 code ./get-stoppedServices.ps1
-  75 git status
-  76 git add .
-  77 git commit -m 'Script Update'
   78 git commit -m 'Script Update' -a
-  79 git push
-  80 git push --set-upstream origin demo-cs
+ git remote set-url origin git@github.com:themichaelbender-ms/demos.git
+   79 git push -u origin demobranch-cs
 3.  Show Microsoft Learn module on X and show Azure Cloud Shell (2)
 4.  Close with Slide of iphone screen accessing cloud shell (1)
