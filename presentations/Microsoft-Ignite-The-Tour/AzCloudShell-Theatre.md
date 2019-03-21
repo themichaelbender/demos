@@ -15,7 +15,7 @@ Shell with GIT already authenticated
    1. Marketing Slides
 2. Where is Cloud Shell Available?
    1. Azure Portal
-   2. Visual Studio Code
+   2. Visual Studio CodeU
    3. shell.azure.com
 3. Walk through initial setup (2)
    1. Add drive through advanced settings
