@@ -7,6 +7,9 @@
   * Configuration of Shell
   * Show Bash dropdown
   * Upload/Download files
+  * configure Profile
+    * cd $HOME
+    * new-item -itemtype file -name $Profile -force
 * Command discovery
   * Basics
 * Installing custom modules from PowerShell Gallery
