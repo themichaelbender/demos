@@ -7,6 +7,17 @@ A script doesn't need to be complex, have a bunch of logical constructs, or look
 
 To that end, I want to share a process for building a parameterized script so you can begin experimenting with building your own tools, and automate tasks in your environment. For years, I have taught a process that works like this:
 
+
+## Step 1: commands
+You start with a hard-coded command that runs on the PowerShell console, and returns the information you are looking for. Why start here? Because if it doesn't work as a single command in the console, then it won't work in a script.
+
+```PowerShell
+Show-StoppedServices.ps1 -ComputerName DC01 -Verbose
+
+```
+
+Once I have a running command, I move it into VS Code, and begin creating variables for any pieces of information that I would input if I were to re-use the command. Things like the Computername parameter come to mind as well as credentials. Remember, variables are a way to story information for our commands, and they will become the basis for our script parameters. In our previous example, you would look to replace the ```Computername``` parameter value with a variable like this:
+=======
 # Common Terms
 
 
@@ -20,15 +31,23 @@ Once I have a running command, I move it into VS Code, and begin creating variab
 # Turn that One-Liner into a Script
 Now, we want to make this script work like the commands we are use to using in PowerShell. Parameterizing a script allows the script to be run along with parameters and input values at time of execution instead of putting the values in the script, or using a technique like Read-Host to get input. Below is what that would look like for a script I created for demos called Show-StoppedServices.ps1 that retrieves the stopped services from remote systems.
 
-```PowerShell
-.\Show-StoppedServices.ps1 -ComputerName DC01 -Verbose
 
+```PowerShell
+$Computername = 'DC01'
 ```
+
+## Step 3: Parameterized Script
+Now, we want to make this script work like the commands we are use to using in PowerShell. Parameterizing a script allows the script to be run along with parameters and input values at time of execution instead of putting the values in the script, or using a technique like Read-Host to get input. Below is what that would look like for a script I created for demos called Show-StoppedServices.ps1 that retrieves the stopped services from remote systems.
+
+
+
+
 # Working through the process with Get-AzVMSize
 
 Let's say I need to perform a task like retrieving the a few pieces of information from a number of remote services. In this task, I want to see the size of the virtual disks of all of my VMs in Azure in a specific resource group. 
 
 To start out, I log into shell.azure.com to access my Azure resources. I issue the following command to see the size of the VHDs of all of my VMS in Azure.
+
 ```PowerShell
 ((get-azvm -ResourceGroupName HBY20-asc-demo  ).StorageProfile).Datadisks
 
@@ -59,10 +78,15 @@ param (
 
 In the example above, I want to ensure that the script always gets the required input of the ResourceGroupName so I make the parameter manadatory. If the parameter is not included at execution, PowerShell will prompt for input before it executes.
 
-This is a simple example of begin tool building and autmation in PowerShell.
+This is a simple example of begin tool building and automation in PowerShell.
 
 
 ## Common Terms
+As with any language, understanding the terminology is critcal. So let's go over a few important terms I'll use today.
+Parameters
+Variable
+Property
+Object
 
 ### Launch in
 
