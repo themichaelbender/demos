@@ -7,17 +7,25 @@ A script doesn't need to be complex, have a bunch of logical constructs, or look
 
 To that end, I want to share a process for building a parameterized script so you can begin experimenting with building your own tools, and automate tasks in your environment. For years, I have taught a process that works like this:
 
-#
+# Common Terms
+
+
+
+# Start with a One-Liner
 You start with a hard-coded command that runs on the PowerShell console, and returns the information you are looking for. Why start here? Because if it doesn't work as a single command in the console, then it won't work in a script.
 
+# Introduce Variables to the Mix
 Once I have a running command, I move it into VS Code, and begin creating variables for any pieces of information that I would input if I were to re-use the command. Things like the Computername parameter come to mind as well as credentials. Remember, variables are a way to story information for our commands, and they will become the basis for our script parameters.
 
+# Turn that One-Liner into a Script
 Now, we want to make this script work like the commands we are use to using in PowerShell. Parameterizing a script allows the script to be run along with parameters and input values at time of execution instead of putting the values in the script, or using a technique like Read-Host to get input. Below is what that would look like for a script I created for demos called Show-StoppedServices.ps1 that retrieves the stopped services from remote systems.
 
 ```PowerShell
 .\Show-StoppedServices.ps1 -ComputerName DC01 -Verbose
 
 ```
+# Working through the process with Get-AzVMSize
+
 Let's say I need to perform a task like retrieving the a few pieces of information from a number of remote services. In this task, I want to see the size of the virtual disks of all of my VMs in Azure in a specific resource group. 
 
 To start out, I log into shell.azure.com to access my Azure resources. I issue the following command to see the size of the VHDs of all of my VMS in Azure.
@@ -55,12 +63,6 @@ This is a simple example of begin tool building and autmation in PowerShell.
 
 
 ## Common Terms
-
-## Step 1: commands
-
-## Step 2: Use Variables
-
-## Step 3: Parameterized Script
 
 ### Launch in
 
