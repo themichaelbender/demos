@@ -1,0 +1,1 @@
+# How is JIT VM access different than AD Schedule w/ GPO
