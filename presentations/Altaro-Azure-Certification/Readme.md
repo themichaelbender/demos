@@ -15,6 +15,9 @@ https://docs.microsoft.com/learn/certifications/exams/az-103
 - Spring 2020 Azure Certification Updates Blog
 http://bit.ly/320n3Ak
 
+- Propelling your career with Microsoft Azure and Pluralsight presetation at Microsoft Ignite
+https://myignite.techcommunity.microsoft.com/sessions/84325?source=sessions
+
 ### Training Resources:
 - Exam Self-assessment spreadsheet from build5nines (Scroll down and chose appropriate exam spreadsheet)
 https://build5nines.com/free-oss-exam-self-assessment-tool/
