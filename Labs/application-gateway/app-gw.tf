@@ -268,10 +268,10 @@ resource "azurerm_virtual_machine" "img02_vm" {
 
   
   # Add code for IIS build out
-resource "azurerm_virtual_machine_extension" "iis-vm-ext-04" {
+resource "azurerm_virtual_machine_extension" "iis-vmext-vid01" {
   #depends_on=[azurerm_windows_virtual_machine.azlbvm]
   count = 1
-  name = "iis-vm-ext-04"
+  name = "iis-vmext-vid01"
   virtual_machine_id = azurerm_virtual_machine.vid01_vm.id
   publisher = "Microsoft.Compute"
   type = "CustomScriptExtension"
@@ -293,10 +293,10 @@ resource "azurerm_virtual_machine_extension" "iis-vm-ext-04" {
   }
 }
 
-resource "azurerm_virtual_machine_extension" "iis-vm-ext-01" {
+resource "azurerm_virtual_machine_extension" "iis-vmext-vid02" {
   #depends_on=[azurerm_windows_virtual_machine.azlbvm]
   count = 1
-  name = "iis-vm-ext-01"
+  name = "iis-vmext-vid02"
   virtual_machine_id = azurerm_virtual_machine.vid02_vm.id
   publisher = "Microsoft.Compute"
   type = "CustomScriptExtension"
@@ -318,10 +318,10 @@ resource "azurerm_virtual_machine_extension" "iis-vm-ext-01" {
   }
 }
 
-resource "azurerm_virtual_machine_extension" "iis-vm-ext-02" {
+resource "azurerm_virtual_machine_extension" "iis-vmext-img01" {
   #depends_on=[azurerm_windows_virtual_machine.azlbvm]
   count = 1
-  name = "iis-vm-ext-02"
+  name = "iis-vmext-img01"
   virtual_machine_id = azurerm_virtual_machine.img01_vm.id
   publisher = "Microsoft.Compute"
   type = "CustomScriptExtension"
@@ -343,10 +343,10 @@ resource "azurerm_virtual_machine_extension" "iis-vm-ext-02" {
   }
 }
 
-resource "azurerm_virtual_machine_extension" "iis-vm-ext-03" {
+resource "azurerm_virtual_machine_extension" "iis-vmext-img02" {
   #depends_on=[azurerm_windows_virtual_machine.azlbvm]
   count = 1
-  name = "iis-vm-ext-03"
+  name = "iis-vmext-img02"
   virtual_machine_id = azurerm_virtual_machine.img02_vm.id
   publisher = "Microsoft.Compute"
   type = "CustomScriptExtension"
