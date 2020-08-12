@@ -335,7 +335,7 @@ resource "azurerm_virtual_machine_extension" "iis-vmext-vid01" {
           "FileURIs": [
               "https://raw.githubusercontent.com/themichaelbender/demos/master/Labs/terraform/azlb/bootstrap-iisvideo.ps1"
           ],
-           "commandToExecute": "powershell -ExecutionPolicy Unrestricted -file iis-bootstrap.ps1"
+           "commandToExecute": "powershell -ExecutionPolicy Unrestricted -file bootstrap-iisvideo.ps1"
            
            }
     SETTINGS
@@ -360,7 +360,7 @@ resource "azurerm_virtual_machine_extension" "iis-vmext-vid02" {
           "FileURIs": [
               "https://raw.githubusercontent.com/themichaelbender/demos/master/Labs/terraform/azlb/bootstrap-iisvideo.ps1"
           ],
-           "commandToExecute": "powershell -ExecutionPolicy Unrestricted -file iis-bootstrap.ps1"
+           "commandToExecute": "powershell -ExecutionPolicy Unrestricted -file bootstrap-iisvideo.ps1"
            
            }
     SETTINGS
@@ -385,7 +385,7 @@ resource "azurerm_virtual_machine_extension" "iis-vmext-img01" {
           "FileURIs": [
               "https://raw.githubusercontent.com/themichaelbender/demos/master/Labs/terraform/azlb/bootstrap-iisimages.ps1"
           ],
-           "commandToExecute": "powershell -ExecutionPolicy Unrestricted -file iis-bootstrap.ps1"
+           "commandToExecute": "powershell -ExecutionPolicy Unrestricted -file bootstrap-iisimages.ps1"
            
            }
     SETTINGS
