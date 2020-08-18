@@ -1,6 +1,5 @@
 # Create lab environment for Configure an Azure Application Gateway
-# Creates 3 vms for use by all tiers (vid02-img02)
-# Both tiers include subnet and NSG
+# Creates 5 vms for use in backend pools
 # All VMs are bootstrapped with IIS and custom webpage w/ name
 # Updates 05-08-2020 - Modifed
 # Variables - Providers - Resources Declarations  
