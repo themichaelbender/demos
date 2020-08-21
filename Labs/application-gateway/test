@@ -1,0 +1,10 @@
+az vm create \
+   --resource-group az_vm_rg \
+   --name myVM \
+   --image UbuntuLTS\
+   --admin-username azureuser \
+   --ssh-key-value ~/.ssh/id_rsa.pub
+
+   ssh -i ~/.ssh/appgwlabadmin azureuser@52.188.105.182
+
+   uname -v

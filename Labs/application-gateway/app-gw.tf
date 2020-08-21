@@ -9,7 +9,7 @@
   }
 
   variable "resource_group_name" {
-    default = "az"
+    default = "azlbrg2"
   }
 
   variable "location" {
@@ -18,14 +18,14 @@
   
 # Create virtual network and subnets
   resource "azurerm_virtual_network" "appgwlab" {
-   name                = "appgwvn"
+   name                = "appgwvnet"
    address_space       = ["10.1.0.0/16"]
    location            = var.location
    resource_group_name = var.resource_group_name
   }
   
-  resource "azurerm_subnet" "agsubnet" {
-   name                 = "agsubnet"
+  resource "azurerm_subnet" "gwsubnet" {
+   name                 = "gwsubnet"
    resource_group_name  = var.resource_group_name
    virtual_network_name = azurerm_virtual_network.appgwlab.name
    address_prefixes      = ["10.1.1.0/24"]
@@ -110,19 +110,45 @@
     }
 
   }
+
+    resource "azurerm_network_interface" "web01_nic" {
+    name                        = "web01_nic"
+    location                    = "eastus"
+    resource_group_name         = var.resource_group_name
+
+    ip_configuration {
+        name                          = "web01_nic"
+        subnet_id                     = azurerm_subnet.besubnet.id
+        private_ip_address_allocation = "Dynamic"
+    }
+
+  }
+
+    resource "azurerm_network_interface" "web02_nic" {
+    name                        = "web02s"
+    location                    = "eastus"
+    resource_group_name         = var.resource_group_name
+
+    ip_configuration {
+        name                          = "web02_nic"
+        subnet_id                     = azurerm_subnet.besubnet.id
+        private_ip_address_allocation = "Dynamic"
+    }
+
+  }
 # Associate network security group to subnet
 resource "azurerm_subnet_network_security_group_association" "agnsgsa" {
   subnet_id                 = azurerm_subnet.besubnet.id
   network_security_group_id = azurerm_network_security_group.agnsg.id
 }
 
-# Create Web Virtual Machines - 4
+# Create Web Virtual Machines - 6
 
  resource "azurerm_virtual_machine" "vid01_vm" {
    name                  = "vid01"
    location              = var.location
    resource_group_name   = var.resource_group_name
-   network_interface_ids = [azurerm_network_interface.vid02_nic.id]
+   network_interface_ids = [azurerm_network_interface.vid01_nic.id]
    vm_size               = "Standard_B1ms"
    delete_os_disk_on_termination = true
    delete_data_disks_on_termination = true
@@ -266,6 +292,42 @@ resource "azurerm_virtual_machine" "img02_vm" {
   
   } 
 
+resource "azurerm_virtual_machine" "web02_vm" {
+   name                  = "web02"
+   location              = var.location
+   resource_group_name   = var.resource_group_name
+   network_interface_ids = [azurerm_network_interface.web02_nic.id]
+   vm_size               = "Standard_B1ms"
+   delete_os_disk_on_termination = true
+   delete_data_disks_on_termination = true
+  
+   storage_image_reference {
+     publisher = "MicrosoftWindowsServer"
+     offer     = "WindowsServer"
+     sku       = "2019-Datacenter-Core"
+     version   = "latest"
+   }
+  
+   storage_os_disk {
+     name              = "web02_OSDisk"
+     caching           = "ReadWrite"
+     create_option     = "FromImage"
+     managed_disk_type = "Standard_LRS"
+   }
+  
+   os_profile {
+     computer_name  = "web02"
+     admin_username = "appgwlabadmin"
+     admin_password = "Password1234!"
+     #allow_extension_operations = true
+   }
+  
+   os_profile_windows_config {
+      provision_vm_agent        = true
+      enable_automatic_upgrades = true
+   }
+  
+  } 
   
   # Add code for IIS build out
 resource "azurerm_virtual_machine_extension" "iis-vmext-vid01" {
@@ -282,7 +344,7 @@ resource "azurerm_virtual_machine_extension" "iis-vmext-vid01" {
         settings = <<SETTINGS
         {
           "FileURIs": [
-              "https://raw.githubusercontent.com/themichaelbender/demos/master/terraform/azlb/iis-bootstrap.ps1"
+              "https://raw.githubusercontent.com/themichaelbender/demos/master/Labs/terraform/azlb/bootstrap-iisvideo.ps1"
           ],
            "commandToExecute": "powershell -ExecutionPolicy Unrestricted -file iis-bootstrap.ps1"
            
@@ -307,7 +369,7 @@ resource "azurerm_virtual_machine_extension" "iis-vmext-vid02" {
         settings = <<SETTINGS
         {
           "FileURIs": [
-              "https://raw.githubusercontent.com/themichaelbender/demos/master/terraform/azlb/iis-bootstrap.ps1"
+              "https://raw.githubusercontent.com/themichaelbender/demos/master/Labs/terraform/azlb/bootstrap-iisvideo.ps1"
           ],
            "commandToExecute": "powershell -ExecutionPolicy Unrestricted -file iis-bootstrap.ps1"
            
@@ -332,7 +394,7 @@ resource "azurerm_virtual_machine_extension" "iis-vmext-img01" {
         settings = <<SETTINGS
         {
           "FileURIs": [
-              "https://raw.githubusercontent.com/themichaelbender/demos/master/terraform/azlb/iis-bootstrap.ps1"
+              "https://raw.githubusercontent.com/themichaelbender/demos/master/Labs/terraform/azlb/bootstrap-iisimages.ps1"
           ],
            "commandToExecute": "powershell -ExecutionPolicy Unrestricted -file iis-bootstrap.ps1"
            
@@ -357,7 +419,32 @@ resource "azurerm_virtual_machine_extension" "iis-vmext-img02" {
         settings = <<SETTINGS
         {
           "FileURIs": [
-              "https://raw.githubusercontent.com/themichaelbender/demos/master/terraform/azlb/iis-bootstrap.ps1"
+              "https://raw.githubusercontent.com/themichaelbender/demos/master/Labs/terraform/azlb/bootstrap-iisimages.ps1"
+          ],
+           "commandToExecute": "powershell -ExecutionPolicy Unrestricted -file iis-bootstrap.ps1"
+           
+           }
+    SETTINGS
+  tags = {
+
+  }
+}
+
+resource "azurerm_virtual_machine_extension" "iis-vmext-web02" {
+  #depends_on=[azurerm_windows_virtual_machine.azlbvm]
+  count = 1
+  name = "iis-vmext-web02"
+  virtual_machine_id = azurerm_virtual_machine.web02_vm.id
+  publisher = "Microsoft.Compute"
+  type = "CustomScriptExtension"
+  type_handler_version = "1.9"
+  
+  # Add code for IIS build out
+
+        settings = <<SETTINGS
+        {
+          "FileURIs": [
+              "https://raw.githubusercontent.com/themichaelbender/demos/master/Labs/terraform/azlb/iis-bootstrap.ps1"
           ],
            "commandToExecute": "powershell -ExecutionPolicy Unrestricted -file iis-bootstrap.ps1"
            
