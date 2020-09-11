@@ -113,7 +113,6 @@ resource "azurerm_subnet_network_security_group_association" "azlblab" {
      computer_name  = "web-01"
      admin_username = "azlblabadmin"
      admin_password = "Password1234!"
-     custom_data = file("${path.module}/init.ps1")
    }
   
    os_profile_windows_config {
