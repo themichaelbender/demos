@@ -20,24 +20,24 @@ provider "azurerm" {
 
 # Create virtual network and subnets
   
-  resource "azurerm_virtual_network" "azlablab" {
+  resource "azurerm_virtual_network" "azlab" {
    name                = "azlabvn"
    address_space       = ["10.0.0.0/16"]
    location            = var.location
    resource_group_name = var.resource_group_name
   }
   
-  resource "azurerm_subnet" "azlablab" {
+  resource "azurerm_subnet" "azlab" {
    name                 = "azlabsub"
    resource_group_name  = var.resource_group_name
-   virtual_network_name = azurerm_virtual_network.azlablab.name
+   virtual_network_name = azurerm_virtual_network.azlab.name
    address_prefixes      = ["10.0.1.0/24"]
   }
 
   resource "azurerm_subnet" "azlabbastionsn" {
    name                 = "AzureBastionSubnet"
    resource_group_name  = var.resource_group_name
-   virtual_network_name = azurerm_virtual_network.azlablab.name
+   virtual_network_name = azurerm_virtual_network.azlab.name
    address_prefixes      = ["10.0.253.0/24"]
   }
 
@@ -66,7 +66,7 @@ resource "azurerm_bastion_host" "azlabbastion" {
 }
 
 # Add Network Security Group
-  resource "azurerm_network_security_group" "azlablab" {
+  resource "azurerm_network_security_group" "azlab" {
     name                = "azlabnsg"
     location            = "eastus"
     resource_group_name = var.resource_group_name
@@ -80,16 +80,16 @@ resource "azurerm_bastion_host" "azlabbastion" {
 
     ip_configuration {
         name                          = "azlabni01"
-        subnet_id                     = azurerm_subnet.azlablab.id
+        subnet_id                     = azurerm_subnet.azlab.id
         private_ip_address_allocation = "Dynamic"
      }
 
   }
 
 # Associate network security group to subnet
-resource "azurerm_subnet_network_security_group_association" "azlablab" {
-  subnet_id                 = azurerm_subnet.azlablab.id
-  network_security_group_id = azurerm_network_security_group.azlablab.id
+resource "azurerm_subnet_network_security_group_association" "azlab" {
+  subnet_id                 = azurerm_subnet.azlab.id
+  network_security_group_id = azurerm_network_security_group.azlab.id
 }
   
 # Create Virtual Machine
@@ -118,7 +118,7 @@ resource "azurerm_subnet_network_security_group_association" "azlablab" {
   
    os_profile {
      computer_name  = "bastion-01"
-     admin_username = "azlablabadmin"
+     admin_username = "azlabadmin"
      admin_password = "Password1234!"
      #allow_extension_operations = true
    }
