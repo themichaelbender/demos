@@ -2,7 +2,8 @@
 # Deploys windows 2019 server
 # This will deploy a VM, bastion-01, running Windows Server 2019 Datacenter - default installation.
 # Once deployed fully, bastion-01 will be available to connect with using Azure Bastion in the Azure Portal.
-# Username and Password is specificied in VM build on lines 
+# Username and Password is specificied in VM build on lines 122 & 123. Modify the terraform with your username and password before deploying
+# Deployment of terraform takes approximately 5 minutes
 
 # Variables
 provider "azurerm" {
@@ -118,8 +119,8 @@ resource "azurerm_subnet_network_security_group_association" "azlab" {
   
    os_profile {
      computer_name  = "bastion-01"
-     admin_username = "azlabadmin"
-     admin_password = "Password1234!"
+     admin_username = # ENTER USERNAME
+     admin_password = # ENTER PASSWORD
      #allow_extension_operations = true
    }
   
