@@ -1,6 +1,6 @@
 # Build Azure Bastion w/ 1 VM
 # Deploys windows 2019 server
-# This will deploy a VM, bastion-01, running Windows Server 2019 Datacenter - default installation.
+# This will deploy a VM, bastion-01, running Windows Server 2019 Datacenter - default installation, BlobStorage account and GPv1 Storage Account.
 # Once deployed fully, bastion-01 will be available to connect with using Azure Bastion in the Azure Portal.
 # Username and Password is specificied in VM build on lines 
 
@@ -11,9 +11,8 @@ provider "azurerm" {
 
 # Variables & Resources
 
-  variable "resource_group_name" {
-    default = "azlab"
-  }
+  variable "resource_group_name" {  }
+  
   variable "location" {
     default = "eastus"
   }
