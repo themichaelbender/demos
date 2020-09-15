@@ -93,7 +93,8 @@ resource "azurerm_subnet_network_security_group_association" "azlab" {
 }
 
 # Add Storage
-# Create BlobStorage
+
+# Create BlobStorage w/ container and blob
   resource "azurerm_storage_account" "stblobstorage" {
     name                     = "stblobstorage01"
     resource_group_name      = var.resource_group_name
@@ -116,6 +117,7 @@ resource "azurerm_subnet_network_security_group_association" "azlab" {
     storage_container_name = azurerm_storage_container.stblobcontainer.name
     type                   = "Block"
     #source                 = "some-local-file.zip"
+    #If you include a file in the same .zip as your terraform, you might be able to use source = to create the blob with the existing file.
   }
 
 # Create GP v1 Storage
@@ -129,6 +131,8 @@ resource "azurerm_subnet_network_security_group_association" "azlab" {
     allow_blob_public_access = "true"  
   }
 
+# Add File Shares and Directories
+# Does not include any files
  resource "azurerm_storage_share" "fsimages" {
   name                 = "images"
   storage_account_name = azurerm_storage_account.stgpv1.name
@@ -181,8 +185,8 @@ resource "azurerm_storage_share_directory" "fsdirdog" {
   
    os_profile {
      computer_name  = "bastion-01"
-     admin_username = "azlabadmin"
-     admin_password = "Password1234!"
+     admin_username = #Enter Username
+     admin_password = #Enter Password
      #allow_extension_operations = true
    }
   
