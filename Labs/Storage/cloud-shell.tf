@@ -1,5 +1,6 @@
   # Create cloud shell storage for user
-  # Creates random storage starting with pssacs and 16 random characters
+  # Creates random storage starting with pssacs and 18 random characters
+  # storage account name example: pssacse6676dpb2ti780zdx7
   
   # Set Provider
   provider "azurerm" {
@@ -17,11 +18,11 @@
 
   #Create random id for storage account
   resource "random_string" "sa_random" {
-    length = 14
+    length = 18
     upper = false
     lower = true
-    min_lower = 7
-    min_numeric = 7
+    min_lower = 9
+    min_numeric = 9
     special = false
   }
 
