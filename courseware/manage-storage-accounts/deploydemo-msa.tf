@@ -16,11 +16,15 @@ provider "azurerm" {
   }
 
   variable "password" {
-      default   = "ThisisabadPWD#1"
+    type = string
+    description = "Administrator password for virtual machine"
+    default   = "ThisisabadPWD#1"
   }
 
   variable "username"   {
-      default   = "stadmin001"
+    type = string
+    description = "Administrator user name for virtual machine"
+    default   = "stadmin001"
   }
 
     #Create random id for storage account
@@ -45,6 +49,7 @@ resource "azurerm_virtual_network" "vnet1_allow" {
    address_space       = ["10.0.0.0/16"]
    location            = var.location
    resource_group_name = var.resource_group_name
+   depends_on          = [azurerm_resource_group.rg_storage]
   }
   
   resource "azurerm_subnet" "snet_vnet1_allow" {
@@ -56,7 +61,7 @@ resource "azurerm_virtual_network" "vnet1_allow" {
 
   resource "azurerm_subnet" "snet_bastion_allow" {
    name                 = "AzureBastionSubnet"
-   resource_group_name  = var.resource_group_name
+   resource_group_name  = azurerm_resource_group.rg_storage.name
    virtual_network_name = azurerm_virtual_network.vnet1_allow.name
    address_prefixes      = ["10.0.253.0/24"]
   }
@@ -66,19 +71,20 @@ resource "azurerm_virtual_network" "vnet2_deny" {
    name                = "vnet2-deny-001"
    address_space       = ["11.0.0.0/16"]
    location            = var.location
-   resource_group_name = var.resource_group_name
+   resource_group_name = azurerm_resource_group.rg_storage.name
+   depends_on          = [azurerm_resource_group.rg_storage]
   }
   
   resource "azurerm_subnet" "snet_vnet2_deny" {
    name                 = "snet-vnet1-deny-001"
-   resource_group_name  = var.resource_group_name
+   resource_group_name  = azurerm_resource_group.rg_storage.name
    virtual_network_name = azurerm_virtual_network.vnet2_deny.name
    address_prefixes      = ["11.0.1.0/24"]
   }
 
   resource "azurerm_subnet" "snet_bastion_deny" {
    name                 = "AzureBastionSubnet"
-   resource_group_name  = var.resource_group_name
+   resource_group_name  = azurerm_resource_group.rg_storage.name
    virtual_network_name = azurerm_virtual_network.vnet2_deny.name
    address_prefixes      = ["11.0.253.0/24"]
   }
@@ -200,7 +206,7 @@ resource "azurerm_subnet_network_security_group_association" "assoc_nsg_deny" {
     storage_container_name = azurerm_storage_container.stblobcontainer.name
     type                   = "Block"
     source         = "webpage001.html"
-    conter_type            = "text/html"
+    content_type            = "text/html"
     #source                 = "some-local-file.zip"
     #If you include a file in the same .zip as your terraform, you might be able to use source = to create the blob with the existing file.
   }
