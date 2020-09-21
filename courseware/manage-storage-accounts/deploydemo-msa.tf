@@ -7,12 +7,31 @@ provider "azurerm" {
   }
 
 # Variables
-  variable "resource_group_name" {  }
+  variable "resource_group_name" { 
+      default = "rg-storage-001"
+   }
   
   variable "location" {
     default = "eastus"
   }
 
+  variable "password" {
+      default   = "ThisisabadPWD#1"
+  }
+
+  variable "username"   {
+      default   = "stadmin001"
+  }
+
+    #Create random id for storage account
+  resource "random_string" "sa_random" {
+    length = 8
+    upper = false
+    lower = true
+    #min_lower = 9
+    #min_numeric = 9
+    special = false
+  }
 # Resource Groups
 resource "azurerm_resource_group" "rg_storage" {
   name     = "rg-storage-001"
@@ -25,20 +44,20 @@ resource "azurerm_virtual_network" "vnet1_allow" {
    name                = "vnet1-allow-001"
    address_space       = ["10.0.0.0/16"]
    location            = var.location
-   resource_group_name = azurerm_resource_group.rg_storage.name
+   resource_group_name = var.resource_group_name
   }
   
   resource "azurerm_subnet" "snet_vnet1_allow" {
    name                 = "snet-vnet1-allow-001"
-   resource_group_name  = azurerm_resource_group.rg_storage.name
-   virtual_network_name = azurerm_resource_group.vnet1_allow.name
+   resource_group_name  = var.resource_group_name
+   virtual_network_name = azurerm_virtual_network.vnet1_allow.name
    address_prefixes      = ["10.0.1.0/24"]
   }
 
   resource "azurerm_subnet" "snet_bastion_allow" {
    name                 = "AzureBastionSubnet"
-   resource_group_name  = azurerm_resource_group.rg_storage.name
-   virtual_network_name = azurerm_resource_group.rg_storage.name
+   resource_group_name  = var.resource_group_name
+   virtual_network_name = azurerm_virtual_network.vnet1_allow.name
    address_prefixes      = ["10.0.253.0/24"]
   }
 
@@ -47,20 +66,20 @@ resource "azurerm_virtual_network" "vnet2_deny" {
    name                = "vnet2-deny-001"
    address_space       = ["11.0.0.0/16"]
    location            = var.location
-   resource_group_name = azurerm_resource_group.rg_storage.name
+   resource_group_name = var.resource_group_name
   }
   
   resource "azurerm_subnet" "snet_vnet2_deny" {
    name                 = "snet-vnet1-deny-001"
-   resource_group_name  = azurerm_resource_group.rg_storage.name
-   virtual_network_name = azurerm_resource_group.vnet2_deny.name
+   resource_group_name  = var.resource_group_name
+   virtual_network_name = azurerm_virtual_network.vnet2_deny.name
    address_prefixes      = ["11.0.1.0/24"]
   }
 
   resource "azurerm_subnet" "snet_bastion_deny" {
    name                 = "AzureBastionSubnet"
-   resource_group_name  = azurerm_resource_group.rg_storage.name
-   virtual_network_name = azurerm_resource_group.rg_storage.name
+   resource_group_name  = var.resource_group_name
+   virtual_network_name = azurerm_virtual_network.vnet2_deny.name
    address_prefixes      = ["11.0.253.0/24"]
   }
 
@@ -87,7 +106,7 @@ resource "azurerm_public_ip" "publicip_deny" {
 resource "azurerm_bastion_host" "bastion_allows" {
   name                = "bastion-vnet1-allow-001"
   resource_group_name = azurerm_resource_group.rg_storage.name
-
+    location          = var.location
   ip_configuration {
     name                 = "configuration"
     subnet_id            = azurerm_subnet.snet_bastion_allow.id
@@ -98,7 +117,7 @@ resource "azurerm_bastion_host" "bastion_allows" {
 resource "azurerm_bastion_host" "bastion_deny" {
   name                = "bastion-vnet2-deny-001"
   resource_group_name = azurerm_resource_group.rg_storage.name
-
+    location          = var.location
   ip_configuration {
     name                 = "configuration"
     subnet_id            = azurerm_subnet.snet_bastion_deny.id
@@ -151,7 +170,7 @@ resource "azurerm_subnet_network_security_group_association" "assoc_nsg_allow" {
   subnet_id                 = azurerm_subnet.snet_vnet1_allow.id
   network_security_group_id = azurerm_network_security_group.nsg_allow.id
 }
-resource "azurerm_subnet_network_security_group_association" "assoc_nsg_allow" {
+resource "azurerm_subnet_network_security_group_association" "assoc_nsg_deny" {
   subnet_id                 = azurerm_subnet.snet_vnet2_deny.id
   network_security_group_id = azurerm_network_security_group.nsg_deny.id
 }
@@ -160,7 +179,7 @@ resource "azurerm_subnet_network_security_group_association" "assoc_nsg_allow" {
 
 # Create BlobStorage w/ container and blob
   resource "azurerm_storage_account" "stblobstorage" {
-    name                     = "st-blobstorage-001"
+    name                     = "stblobstorage001"
     resource_group_name      = azurerm_resource_group.rg_storage.name
     location                 = var.location
     account_tier             = "standard"
@@ -172,22 +191,22 @@ resource "azurerm_subnet_network_security_group_association" "assoc_nsg_allow" {
   resource "azurerm_storage_container" "stblobcontainer" {
     name                    = "documents"
     storage_account_name = azurerm_storage_account.stblobstorage.name
-    container_access_type = "public"
+    container_access_type = "container"
   }
 
-  resource "azurerm_storage_blob" "blob_file_01" {
-    name                   = "file001.txt"
+  resource "azurerm_storage_blob" "blob_01" {
+    name                   = "webpage001.html"
     storage_account_name   = azurerm_storage_account.stblobstorage.name
     storage_container_name = azurerm_storage_container.stblobcontainer.name
     type                   = "Block"
-    source_content         = "This is a basic file"
+    source         = "webpage001.html"
+    conter_type            = "text/html"
     #source                 = "some-local-file.zip"
     #If you include a file in the same .zip as your terraform, you might be able to use source = to create the blob with the existing file.
   }
-
 # Create GP v1 Storage
   resource "azurerm_storage_account" "stgpv1" {
-    name                     = "st-gpv1storage-001"
+    name                     = "stgpv1storage001"
     resource_group_name      = azurerm_resource_group.rg_storage.name
     location                 = var.location
     account_tier             = "Standard"
@@ -251,8 +270,8 @@ resource "azurerm_storage_share_directory" "fsdirdog" {
   
    os_profile {
      computer_name  = "vm001"
-     admin_username = #Enter Username
-     admin_password = #Enter Password
+     admin_username = var.username
+     admin_password = var.password
      #allow_extension_operations = true
    }
   
@@ -288,8 +307,8 @@ resource "azurerm_storage_share_directory" "fsdirdog" {
   
    os_profile {
      computer_name  = "vm002"
-     admin_username = #Enter Username
-     admin_password = #Enter Password
+     admin_username = var.username
+     admin_password = var.password
      #allow_extension_operations = true
    }
   
