@@ -1,0 +1,8 @@
+# Create Azure Storage account with Azure CLI
+
+az storage account create \
+    --name st-az104-eastus-cli-001 \
+    --resource-group rg-az104-eastus-001 \
+    --location eastus \
+    --sku Standard_LRS \
+    --kind StorageV2
