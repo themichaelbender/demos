@@ -45,7 +45,7 @@ resource "azurerm_resource_group" "rg_storage" {
 # Virtual networks
 # VNET1 - Allow 
 resource "azurerm_virtual_network" "vnet1_allow" {
-   name                = "vnet1-allow-001"
+   name                = "vnet1-allow"
    address_space       = ["10.0.0.0/16"]
    location            = var.location
    resource_group_name = var.resource_group_name
@@ -53,7 +53,7 @@ resource "azurerm_virtual_network" "vnet1_allow" {
   }
   
   resource "azurerm_subnet" "snet_vnet1_allow" {
-   name                 = "snet-vnet1-allow-001"
+   name                 = "snet-vnet1-allow"
    resource_group_name  = var.resource_group_name
    virtual_network_name = azurerm_virtual_network.vnet1_allow.name
    address_prefixes      = ["10.0.1.0/24"]
@@ -68,7 +68,7 @@ resource "azurerm_virtual_network" "vnet1_allow" {
 
 # VNET2 - Deny
 resource "azurerm_virtual_network" "vnet2_deny" {
-   name                = "vnet2-deny-001"
+   name                = "vnet2-deny"
    address_space       = ["11.0.0.0/16"]
    location            = var.location
    resource_group_name = azurerm_resource_group.rg_storage.name
@@ -76,7 +76,7 @@ resource "azurerm_virtual_network" "vnet2_deny" {
   }
   
   resource "azurerm_subnet" "snet_vnet2_deny" {
-   name                 = "snet-vnet1-deny-001"
+   name                 = "snet-vnet1-deny"
    resource_group_name  = azurerm_resource_group.rg_storage.name
    virtual_network_name = azurerm_virtual_network.vnet2_deny.name
    address_prefixes      = ["11.0.1.0/24"]
@@ -92,7 +92,7 @@ resource "azurerm_virtual_network" "vnet2_deny" {
 # Public IP Address
 
 resource "azurerm_public_ip" "publicip_allow" {
-    name                         = "publicip-vnet1-allow-001"
+    name                         = "publicip-vnet1-allow"
     location                     = "eastus"
     resource_group_name          = azurerm_resource_group.rg_storage.name
     allocation_method   = "Static"
@@ -100,7 +100,7 @@ resource "azurerm_public_ip" "publicip_allow" {
 
 }
 resource "azurerm_public_ip" "publicip_deny" {
-    name                         = "publicip-vnet2-deny-001"
+    name                         = "publicip-vnet2-deny"
     location                     = "eastus"
     resource_group_name          = azurerm_resource_group.rg_storage.name
     allocation_method   = "Static"
@@ -110,7 +110,7 @@ resource "azurerm_public_ip" "publicip_deny" {
 
 # Azure Bastion host
 resource "azurerm_bastion_host" "bastion_allows" {
-  name                = "bastion-vnet1-allow-001"
+  name                = "bastion-vnet1-allow"
   resource_group_name = azurerm_resource_group.rg_storage.name
     location          = var.location
   ip_configuration {
@@ -121,7 +121,7 @@ resource "azurerm_bastion_host" "bastion_allows" {
 }
 
 resource "azurerm_bastion_host" "bastion_deny" {
-  name                = "bastion-vnet2-deny-001"
+  name                = "bastion-vnet2-deny"
   resource_group_name = azurerm_resource_group.rg_storage.name
     location          = var.location
   ip_configuration {
@@ -133,14 +133,14 @@ resource "azurerm_bastion_host" "bastion_deny" {
 
 # Add Network Security Group
   resource "azurerm_network_security_group" "nsg_allow" {
-    name                = "nsg-vnet1-allow-001"
+    name                = "nsg-vnet1-allow"
     location            = "eastus"
     resource_group_name = azurerm_resource_group.rg_storage.name
 
 }
 
   resource "azurerm_network_security_group" "nsg_deny" {
-    name                = "nsg-vnet2-deny-001"
+    name                = "nsg-vnet2-deny"
     location            = "eastus"
     resource_group_name = azurerm_resource_group.rg_storage.name
 
@@ -148,7 +148,7 @@ resource "azurerm_bastion_host" "bastion_deny" {
 
 # Create Network interfaces
   resource "azurerm_network_interface" "ni_vm001" {
-    name                        = "ni-vm001-001"
+    name                        = "ni-vm001"
     location                    = "eastus"
     resource_group_name         = azurerm_resource_group.rg_storage.name
 
@@ -160,7 +160,7 @@ resource "azurerm_bastion_host" "bastion_deny" {
 
   }
   resource "azurerm_network_interface" "ni_vm002" {
-    name                        = "ni-vm002-001"
+    name                        = "ni-vm002"
     location                    = "eastus"
     resource_group_name         = azurerm_resource_group.rg_storage.name
 
@@ -185,7 +185,7 @@ resource "azurerm_subnet_network_security_group_association" "assoc_nsg_deny" {
 
 # Create BlobStorage w/ container and blob
   resource "azurerm_storage_account" "stblobstorage" {
-    name                     = "stblobstorage001"
+    name                     = "sablobstorage001"
     resource_group_name      = azurerm_resource_group.rg_storage.name
     location                 = var.location
     account_tier             = "standard"
@@ -194,16 +194,16 @@ resource "azurerm_subnet_network_security_group_association" "assoc_nsg_deny" {
     allow_blob_public_access = "true"  
   }
 
-  resource "azurerm_storage_container" "stblobcontainer" {
+  resource "azurerm_storage_container" "sablobcontainer" {
     name                    = "documents"
-    storage_account_name = azurerm_storage_account.stblobstorage.name
+    storage_account_name = azurerm_storage_account.sablobstorage.name
     container_access_type = "container"
   }
 
   resource "azurerm_storage_blob" "blob_01" {
     name                   = "webpage001.html"
-    storage_account_name   = azurerm_storage_account.stblobstorage.name
-    storage_container_name = azurerm_storage_container.stblobcontainer.name
+    storage_account_name   = azurerm_storage_account.sablobstorage.name
+    storage_container_name = azurerm_storage_container.sablobcontainer.name
     type                   = "Block"
     source         = "webpage001.html"
     content_type            = "text/html"
@@ -211,8 +211,8 @@ resource "azurerm_subnet_network_security_group_association" "assoc_nsg_deny" {
     #If you include a file in the same .zip as your terraform, you might be able to use source = to create the blob with the existing file.
   }
 # Create GP v1 Storage
-  resource "azurerm_storage_account" "stgpv1" {
-    name                     = "stgpv1storage001"
+  resource "azurerm_storage_account" "sagpv1" {
+    name                     = "sagpv1storage001"
     resource_group_name      = azurerm_resource_group.rg_storage.name
     location                 = var.location
     account_tier             = "Standard"
@@ -225,14 +225,14 @@ resource "azurerm_subnet_network_security_group_association" "assoc_nsg_deny" {
 # Does not include any files
  resource "azurerm_storage_share" "fsimages" {
   name                 = "images"
-  storage_account_name = azurerm_storage_account.stgpv1.name
+  storage_account_name = azurerm_storage_account.sagpv1.name
   quota                = 50
 
   }
 
    resource "azurerm_storage_share" "fsdata" {
   name                 = "data"
-  storage_account_name = azurerm_storage_account.stgpv1.name
+  storage_account_name = azurerm_storage_account.sagpv1.name
   quota                = 50
 
   }
@@ -240,13 +240,13 @@ resource "azurerm_subnet_network_security_group_association" "assoc_nsg_deny" {
   resource "azurerm_storage_share_directory" "fsdirbird" {
   name                 = "birds"
   share_name           = azurerm_storage_share.fsimages.name
-  storage_account_name = azurerm_storage_account.stgpv1.name
+  storage_account_name = azurerm_storage_account.sagpv1.name
 }
 
 resource "azurerm_storage_share_directory" "fsdirdog" {
   name                 = "dogs"
   share_name           = azurerm_storage_share.fsimages.name
-  storage_account_name = azurerm_storage_account.stgpv1.name
+  storage_account_name = azurerm_storage_account.sagpv1.name
 }
 # Virtual Machines
 
