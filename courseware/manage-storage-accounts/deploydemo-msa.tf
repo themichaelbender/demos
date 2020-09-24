@@ -184,8 +184,8 @@ resource "azurerm_subnet_network_security_group_association" "assoc_nsg_deny" {
 # Storage
 
 # Create BlobStorage w/ container and blob
-  resource "azurerm_storage_account" "stblobstorage" {
-    name                     = "sablobstorage001"
+  resource "azurerm_storage_account" "sablob001" {
+    name                     = "sablob001"
     resource_group_name      = azurerm_resource_group.rg_storage.name
     location                 = var.location
     account_tier             = "standard"
@@ -211,8 +211,8 @@ resource "azurerm_subnet_network_security_group_association" "assoc_nsg_deny" {
     #If you include a file in the same .zip as your terraform, you might be able to use source = to create the blob with the existing file.
   }
 # Create GP v1 Storage
-  resource "azurerm_storage_account" "sagpv1" {
-    name                     = "sagpv1storage001"
+  resource "azurerm_storage_account" "sastorage001" {
+    name                     = "sastorage001"
     resource_group_name      = azurerm_resource_group.rg_storage.name
     location                 = var.location
     account_tier             = "Standard"
@@ -225,14 +225,14 @@ resource "azurerm_subnet_network_security_group_association" "assoc_nsg_deny" {
 # Does not include any files
  resource "azurerm_storage_share" "fsimages" {
   name                 = "images"
-  storage_account_name = azurerm_storage_account.sagpv1.name
+  storage_account_name = azurerm_storage_account.sastorage001.name
   quota                = 50
 
   }
 
    resource "azurerm_storage_share" "fsdata" {
   name                 = "data"
-  storage_account_name = azurerm_storage_account.sagpv1.name
+  storage_account_name = azurerm_storage_account.sastorage001.name
   quota                = 50
 
   }
@@ -240,13 +240,13 @@ resource "azurerm_subnet_network_security_group_association" "assoc_nsg_deny" {
   resource "azurerm_storage_share_directory" "fsdirbird" {
   name                 = "birds"
   share_name           = azurerm_storage_share.fsimages.name
-  storage_account_name = azurerm_storage_account.sagpv1.name
+  storage_account_name = azurerm_storage_account.sastorage001.name
 }
 
 resource "azurerm_storage_share_directory" "fsdirdog" {
   name                 = "dogs"
   share_name           = azurerm_storage_share.fsimages.name
-  storage_account_name = azurerm_storage_account.sagpv1.name
+  storage_account_name = azurerm_storage_account.sastorage001.name
 }
 # Virtual Machines
 
