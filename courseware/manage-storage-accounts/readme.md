@@ -1,6 +1,6 @@
-# Welcome to the Resource Repository for Microsoft Azure Administrator: Manage Storage Accounts on [Pluralsight.com](https://www.pluralsight.com/courses/microsoft-azure-administrator-manage-storage-account)
+# Welcome to the Resource Repository for Microsoft Azure Administrator: Manage Storage Accounts
 
-## Disclaimer: All demo code is provide as a reference and is not to be used in a production environment. Let's be careful out there!!
+## Disclaimer: All demo code is provided as a reference and is not to be used in a production environment. Let's be careful out there!!
 
 ## How to Use
 
@@ -15,7 +15,8 @@ I recommend using Azure Cloud Shell. It has terraform already installed. Simply 
 - `course-resources.md` - Course Reference documents
 - `deploydemo-msa.tf` - file for building demo environmnet with terraform
 - `webpage001.html` - Webpage used in storage demos
-- `slides.pdf` - PDF of slides from course
+- `slides-m1.pdf` - PDF of slides from module 1
+- `slides-m2.pdf` - PDF of slides from module 2
 
 ### Please leave any comments/questions on the course discussion board on pluralsight, or reach out to me via [@Michaelbender on Twitter](https://twitter.com/michaelbender)
 

@@ -15,6 +15,6 @@ https://docs.microsoft.com/en-us/azure/backup/configure-reports
 https://docs.microsoft.com/en-us/azure/backup/backup-azure-security-feature-cloud
 https://docs.microsoft.com/en-us/azure/backup/soft-delete-virtual-machines
 
+[Backup and Disaster Recovery](https://azure.microsoft.com/en-us/solutions/backup-and-disaster-recovery/)
 
-
-
+[Set up disaster recovery for Azure VMs](https://docs.microsoft.com/en-us/azure/site-recovery/azure-to-azure-tutorial-enable-replication)
