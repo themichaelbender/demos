@@ -1,5 +1,22 @@
 # Courseware Demo Template
 # Microsoft Azure Administrator: Manage Storage Accounts
+# Before using, add Password and Username value to the respective variables.
+# WARNING: This template utilizes resources in azure that will run up your bill if left alone for a few days.
+# Delete the Resouce Group when you are done
+
+# Basic instructions
+# Connect to Azure with whatever tooling you wish
+# I recommend Azure Cloud Shell
+# Copy this .tf file into a directory of a system with Terraform installed
+# Run the following commands:
+# terraform init
+# terraform apply
+
+# When finished with the demos run:
+# terraform destory
+
+
+
 
 # Provider
 provider "azurerm" {
@@ -18,13 +35,13 @@ provider "azurerm" {
   variable "password" {
     type = string
     description = "Administrator password for virtual machine"
-    default   = "ThisisabadPWD#1"
+    default   = #Enter Password
   }
 
   variable "username"   {
     type = string
     description = "Administrator user name for virtual machine"
-    default   = "stadmin001"
+    default   = #Enter Username
   }
 
     #Create random id for storage account

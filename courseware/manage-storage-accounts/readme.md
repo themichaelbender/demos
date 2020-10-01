@@ -1,25 +1,23 @@
-# Welcome to the Resource Repository
+# Welcome to the Resource Repository for Microsoft Azure Administrator: Manage Storage Accounts on [Pluralsight.com](https://www.pluralsight.com/courses/microsoft-azure-administrator-manage-storage-account)
 
-# For Pluralsight Course -
-
-# Microsoft Azure Administrator: Manage Storage Accounts
+## Disclaimer: All demo code is provide as a reference and is not to be used in a production environment. Let's be careful out there!!
 
 ## How to Use
 
-## References
-See [course-resources.md](courseware\manage-storage-accounts\course-resources.md)
+Below you will find links to references from the course and additional references you may find helpful. Also, more detailed instructions for deploying a demo environment for the course with terraform will be included at a later date.
 
-## 
+If you want to give it a shot on your own, use deploydemo-msa.tf from the exercise file download
 
+I recommend using Azure Cloud Shell. It has terraform already installed. Simply copy deploydemo-msa.tf into your clouddrive, and run the commands listed in the .tf file's references.
 
-## Deploy Demo Environment for Microsoft Azure Administrator: Manage Storage Accounts
+## Included in this exercise file repository
 
-# Using deploydemo-msa.tf
-- Download deploydem-msa.tf from [Github](https://github.com/themichaelbender/demos/blob/master/courseware/manage-storage-accounts/deploydemo-msa.tf)
+### course-resources.md
+### deploydemo-msa.tf
+### webpage001.html
+### file01.txt
+### file02.txt
 
-# Configure vm001
-- [Install Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/)
+### Please leave any comments/questions on the course discussion board on pluralsight, or reach out to me via [@Michaelbender on Twitter](https://twitter.com/michaelbender)
 
-
-# Configure VM002
-- [Install Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/)
+## Thanks for Watching!!!!
