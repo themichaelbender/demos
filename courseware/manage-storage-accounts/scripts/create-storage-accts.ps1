@@ -1,8 +1,10 @@
 # Create an Azure Storage Account with Azure PowerShell
-# Module 1
-
-New-AzStorageAccount -ResourceGroupName rg-az104-eastus-001 `
-    -Name st-az104-eastus-ps-001 `
+# Optional
+New-AzStorageAccount -ResourceGroupName rg-storage-001 `
+    -Name sagpv2storageps001 `
     -Location "eastus" `
     -SkuName Standard_GRS `
     -Kind StorageV2
+
+# View all storage accounts
+Get-AzStorageAccount | where ResourceGroupName -eq "rg-storage-001" | ft
