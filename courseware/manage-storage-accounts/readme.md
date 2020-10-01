@@ -6,17 +6,16 @@
 
 Below you will find links to references from the course and additional references you may find helpful. Also, more detailed instructions for deploying a demo environment for the course with terraform will be included at a later date.
 
-If you want to give it a shot on your own, use deploydemo-msa.tf from the exercise file download
+If you want to give it a shot on your own, use `deploydemo-msa.tf` from the exercise file download
 
-I recommend using Azure Cloud Shell. It has terraform already installed. Simply copy deploydemo-msa.tf into your clouddrive, and run the commands listed in the .tf file's references.
+I recommend using Azure Cloud Shell. It has terraform already installed. Simply copy `deploydemo-msa.tf` into your clouddrive, and run the commands listed in the .tf file's references.
 
 ## Included in this exercise file repository
 
-### course-resources.md
-### deploydemo-msa.tf
-### webpage001.html
-### file01.txt
-### file02.txt
+- `course-resources.md` - Course Reference documents
+- `deploydemo-msa.tf` - file for building demo environmnet with terraform
+- `webpage001.html` - Webpage used in storage demos
+- `slides.pdf` - PDF of slides from course
 
 ### Please leave any comments/questions on the course discussion board on pluralsight, or reach out to me via [@Michaelbender on Twitter](https://twitter.com/michaelbender)
 
