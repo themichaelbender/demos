@@ -18,3 +18,29 @@ https://docs.microsoft.com/en-us/azure/backup/soft-delete-virtual-machines
 [Backup and Disaster Recovery](https://azure.microsoft.com/en-us/solutions/backup-and-disaster-recovery/)
 
 [Set up disaster recovery for Azure VMs](https://docs.microsoft.com/en-us/azure/site-recovery/azure-to-azure-tutorial-enable-replication)
+
+[Backup and Archive of on premises applications](https://docs.microsoft.com/en-us/azure/architecture/solution-ideas/articles/backup-archive-on-premises-applications#:~:text=Azure%20Backup%20Server%20can%20write%20backups%20directly%20to,a%20cloud%20endpoint%20such%20as%20Veeam%20Cloud%20Connect.
+)
+
+[Soft Delete for virtual machine](https://docs.microsoft.com/en-us/azure/backup/soft-delete-virtual-machines)
+
+[Back up and restore encrypted Azure virtual machines](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption)
+
+[Manage Azure VM Backups](https://docs.microsoft.com/en-us/azure/backup/backup-azure-manage-vms)
+
+[Monitoring Azure Backup Workloads](https://docs.microsoft.com/en-us/azure/backup/backup-azure-monitoring-built-in-monitor)
+
+[Configure Azure Backup Reports](https://docs.microsoft.com/en-us/azure/backup/configure-reports)
+
+[Use diagnostics settings for Recovery Services vaults](https://docs.microsoft.com/en-us/azure/backup/backup-azure-diagnostic-events)
+
+[Create a Log Analytics workspace in the Azure portal
+](https://docs.microsoft.com/en-us/azure/azure-monitor/learn/quick-create-workspace)
+
+[Back up Azure file shares](https://docs.microsoft.com/en-us/azure/backup/backup-afs)
+
+[Restore Azure file shares](https://docs.microsoft.com/en-us/azure/backup/restore-afs)
+
+[Azure CLI documentation(https://docs.microsoft.com/en-us/cli/azure/)]
+
+[Get started with Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli)
