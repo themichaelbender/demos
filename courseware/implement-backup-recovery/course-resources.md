@@ -44,3 +44,5 @@ https://docs.microsoft.com/en-us/azure/backup/soft-delete-virtual-machines
 [Azure CLI documentation(https://docs.microsoft.com/en-us/cli/azure/)]
 
 [Get started with Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli)
+
+[BCDR Pairs](https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions#azure-regional-pairs)
