@@ -8,8 +8,9 @@ https://docs.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vau
 ## Reports
 https://docs.microsoft.com/en-us/azure/backup/backup-azure-manage-vms#:~:text=%20To%20manage%20a%20backup%20policy%3A%20%201,policies%2C%20select%20a%20different%20policy%20and...%20More%20
 
-https://docs.microsoft.com/en-us/azure/backup/configure-reports
+[Configure Azure Backup reports](https://docs.microsoft.com/en-us/azure/backup/configure-reports)
 
+[Use diagnostics settings for Recovery Services vaults](https://docs.microsoft.com/en-us/azure/backup/backup-azure-diagnostic-events)
 
 ## Recover VMs with Soft Delete
 https://docs.microsoft.com/en-us/azure/backup/backup-azure-security-feature-cloud
@@ -46,3 +47,8 @@ https://docs.microsoft.com/en-us/azure/backup/soft-delete-virtual-machines
 [Get started with Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli)
 
 [BCDR Pairs](https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions#azure-regional-pairs)
+
+### Deleting an Azure Site Recovery Vault 
+
+[Deleting Azure Site Recovery Vault](https://docs.microsoft.com/en-us/azure/backup/backup-azure-delete-vault)
+[]()
