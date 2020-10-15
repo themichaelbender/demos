@@ -1,54 +1,101 @@
-# Course Resource for Microsoft Azure Administrator: Implement Backup and Recovery
+# Course Resource for Microsoft Azure Administrator: Manage Storage Accounts
 
-## AZ-104 Exam information https://bit.ly/az104ms
+## Microsoft Azure Administrator Exam AZ-104 Information
 
-## Recovery services vault
-https://docs.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview#:~:text=This%20article%20describes%20the%20features%20of%20a%20Recovery,for%20virtual%20machines%20%28VMs%29%2C%20workloads%2C%20servers%2C%20or%20workstations.
+[AZ-104 Exam information](https://bit.ly/az104ms)
 
-## Reports
-https://docs.microsoft.com/en-us/azure/backup/backup-azure-manage-vms#:~:text=%20To%20manage%20a%20backup%20policy%3A%20%201,policies%2C%20select%20a%20different%20policy%20and...%20More%20
+[Direct Link AZ-104 Skills Measured Document](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4pCWy)
 
-[Configure Azure Backup reports](https://docs.microsoft.com/en-us/azure/backup/configure-reports)
-
-[Use diagnostics settings for Recovery Services vaults](https://docs.microsoft.com/en-us/azure/backup/backup-azure-diagnostic-events)
-
-## Recover VMs with Soft Delete
-https://docs.microsoft.com/en-us/azure/backup/backup-azure-security-feature-cloud
-https://docs.microsoft.com/en-us/azure/backup/soft-delete-virtual-machines
+## Backup and Disaster Recovery
 
 [Backup and Disaster Recovery](https://azure.microsoft.com/en-us/solutions/backup-and-disaster-recovery/)
 
+[BCDR Pairs](https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions#azure-regional-pairs)
+
 [Set up disaster recovery for Azure VMs](https://docs.microsoft.com/en-us/azure/site-recovery/azure-to-azure-tutorial-enable-replication)
 
-[Backup and Archive of on premises applications](https://docs.microsoft.com/en-us/azure/architecture/solution-ideas/articles/backup-archive-on-premises-applications#:~:text=Azure%20Backup%20Server%20can%20write%20backups%20directly%20to,a%20cloud%20endpoint%20such%20as%20Veeam%20Cloud%20Connect.
-)
+## Create a Recovery Services Vault 
+[Recovery Services vaults overview](https://docs.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview)
 
-[Soft Delete for virtual machine](https://docs.microsoft.com/en-us/azure/backup/soft-delete-virtual-machines)
+[Create and configure a Recovery Services vault](https://docs.microsoft.com/en-us/azure/backup/backup-create-rs-vault)
+
+[Move a Recovery Services vault across Azure Subscriptions and Resource Groups](https://docs.microsoft.com/en-us/azure/backup/backup-azure-move-recovery-services-vault)
+
+[Deleting Azure Site Recovery Vault](https://docs.microsoft.com/en-us/azure/backup/backup-azure-delete-vault)
+
+## Create and configure backup policy 
+
+[Manage backup policy for a VM](https://docs.microsoft.com/en-us/azure/backup/backup-azure-manage-vms#manage-backup-policy-for-a-vm)
+
+[Azure Files - Create a New Policy](https://docs.microsoft.com/en-us/azure/backup/manage-afs-backup#create-a-new-policy)
+
+## Perform backup and restore operations by using Azure Backup Service 
+
+### Azure VMs
+[An overview of Azure VM backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-introduction)
+
+[Manage Azure VM backups with Azure Backup service](https://docs.microsoft.com/en-us/azure/backup/backup-azure-manage-vms#:~:text=%20To%20manage%20a%20backup%20policy%3A%20%201,policies%2C%20select%20a%20different%20policy%20and...%20More%20)
 
 [Back up and restore encrypted Azure virtual machines](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption)
 
+[Recover files from Azure to a Windows Server](https://docs.microsoft.com/en-us/azure/backup/tutorial-backup-restore-files-windows-server)
+
 [Manage Azure VM Backups](https://docs.microsoft.com/en-us/azure/backup/backup-azure-manage-vms)
 
-[Monitoring Azure Backup Workloads](https://docs.microsoft.com/en-us/azure/backup/backup-azure-monitoring-built-in-monitor)
+[Back up Windows Server to Azure - Hybrid](https://docs.microsoft.com/en-us/azure/backup/tutorial-backup-windows-server-to-azure)
 
-[Configure Azure Backup Reports](https://docs.microsoft.com/en-us/azure/backup/configure-reports)
+### Azure Files
 
-[Use diagnostics settings for Recovery Services vaults](https://docs.microsoft.com/en-us/azure/backup/backup-azure-diagnostic-events)
-
-[Create a Log Analytics workspace in the Azure portal
-](https://docs.microsoft.com/en-us/azure/azure-monitor/learn/quick-create-workspace)
+[About Azure file share backup](https://docs.microsoft.com/en-us/azure/backup/azure-file-share-backup-overview)
 
 [Back up Azure file shares](https://docs.microsoft.com/en-us/azure/backup/backup-afs)
 
 [Restore Azure file shares](https://docs.microsoft.com/en-us/azure/backup/restore-afs)
 
+[Restore Azure Files with PowerShell](https://docs.microsoft.com/en-us/azure/backup/restore-afs-powershell)
+
+[Backup and Archive of on premises applications](https://docs.microsoft.com/en-us/azure/architecture/solution-ideas/articles/backup-archive-on-premises-applications#:~:text=Azure%20Backup%20Server%20can%20write%20backups%20directly%20to,a%20cloud%20endpoint%20such%20as%20Veeam%20Cloud%20Connect.)
+
+## Perform site-to-site recovery by using Azure Site Recovery 
+
+
+## Configure and review backup reports  
+
+[Configure Azure Backup Reports](https://docs.microsoft.com/en-us/azure/backup/configure-reports)
+
+[Use diagnostics settings for Recovery Services vaults](https://docs.microsoft.com/en-us/azure/backup/backup-azure-diagnostic-events)
+
+[Create a Log Analytics workspace in the Azure portal](https://docs.microsoft.com/en-us/azure/azure-monitor/learn/quick-create-workspace)
+
+[Monitoring Azure Backup Workloads](https://docs.microsoft.com/en-us/azure/backup/backup-azure-monitoring-built-in-monitor)
+
+## Recover VMs with Soft Delete
+## Use soft delete to recover Azure VMs 
+
+[Accidental delete protection for Azure file shares using Azure Backup](https://docs.microsoft.com/en-us/azure/backup/soft-delete-azure-file-share)
+
+[Soft delete for Azure Backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-security-feature-cloud)
+
+[Soft Delete for virtual machine](https://docs.microsoft.com/en-us/azure/backup/soft-delete-virtual-machines)
+
 [Azure CLI documentation(https://docs.microsoft.com/en-us/cli/azure/)]
 
 [Get started with Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli)
 
-[BCDR Pairs](https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions#azure-regional-pairs)
 
-### Deleting an Azure Site Recovery Vault 
 
-[Deleting Azure Site Recovery Vault](https://docs.microsoft.com/en-us/azure/backup/backup-azure-delete-vault)
-[]()
+
+
+## Relevant Pluralsight Courses
+
+
+## Miscellaneous
+[Azure PowerShell Documentation](https://docs.microsoft.com/en-us/powershell/azure/?view=azps-4.8.0)
+
+[Azure CLI Documentation]()
+
+[az backup commands](https://docs.microsoft.com/en-us/cli/azure/backup?view=azure-cli-latest)
+
+[Az.RecoveryServices PowerShell Module](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/?view=azps-4.8.0)
+
+[Azure Cloud Shell Overview](https://docs.microsoft.com/azure/cloud-shell/overview)
