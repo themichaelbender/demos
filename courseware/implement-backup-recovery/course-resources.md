@@ -1,4 +1,6 @@
-# Course Resource for Microsoft Azure Administrator: Manage Storage Accounts
+# Course Resources for Microsoft Azure Administrator: Implement Backup and Recovery
+
+The following is a comprehensive guide of documentation related to Azure Backup and Azure Site Recovery. Along with the video course and hands-on learning, reviewing all the Microsoft documentation related to the AZ-104 exam objectives is highly recommended for exam success.
 
 ## Microsoft Azure Administrator Exam AZ-104 Information
 
@@ -58,6 +60,11 @@
 
 ## Perform site-to-site recovery by using Azure Site Recovery 
 
+[About Site Recovery](https://docs.microsoft.com/en-us/azure/site-recovery/site-recovery-overview)
+
+[Quickstart: Set up disaster recovery to a secondary Azure region for an Azure VM](https://docs.microsoft.com/en-us/azure/site-recovery/azure-to-azure-quickstart)
+
+
 
 ## Configure and review backup reports  
 
@@ -72,27 +79,26 @@
 ## Recover VMs with Soft Delete
 ## Use soft delete to recover Azure VMs 
 
-[Accidental delete protection for Azure file shares using Azure Backup](https://docs.microsoft.com/en-us/azure/backup/soft-delete-azure-file-share)
-
 [Soft delete for Azure Backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-security-feature-cloud)
 
 [Soft Delete for virtual machine](https://docs.microsoft.com/en-us/azure/backup/soft-delete-virtual-machines)
 
-[Azure CLI documentation(https://docs.microsoft.com/en-us/cli/azure/)]
-
-[Get started with Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli)
-
-
-
-
+[Accidental delete protection for Azure file shares using Azure Backup](https://docs.microsoft.com/en-us/azure/backup/soft-delete-azure-file-share)
 
 ## Relevant Pluralsight Courses
 
+[Implementing Microsoft Azure Backup](https://www.pluralsight.com/courses/microsoft-azure-backup-implementing)
+
+[Designing a Site Recovery Strategy on Microsoft Azure](https://www.pluralsight.com/courses/azure-site-recovery-strategy-designing-update)
 
 ## Miscellaneous
+
 [Azure PowerShell Documentation](https://docs.microsoft.com/en-us/powershell/azure/?view=azps-4.8.0)
 
-[Azure CLI Documentation]()
+[Azure CLI documentation](https://docs.microsoft.com/en-us/cli/azure/)
+
+[Get started with Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli)
+
 
 [az backup commands](https://docs.microsoft.com/en-us/cli/azure/backup?view=azure-cli-latest)
 
