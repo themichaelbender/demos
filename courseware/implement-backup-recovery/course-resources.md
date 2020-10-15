@@ -99,7 +99,6 @@ The following is a comprehensive guide of documentation related to Azure Backup 
 
 [Get started with Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli)
 
-
 [az backup commands](https://docs.microsoft.com/en-us/cli/azure/backup?view=azure-cli-latest)
 
 [Az.RecoveryServices PowerShell Module](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/?view=azps-4.8.0)
