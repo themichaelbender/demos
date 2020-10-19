@@ -10,19 +10,29 @@ The following is a comprehensive guide of documentation related to Azure Backup 
 
 ## Azure Import/Export Service
 
+[Azure Import/Export system requirements](https://docs.microsoft.com/en-us/azure/storage/common/storage-import-export-requirements)
+
+[What is Azure Import/Export service?](https://docs.microsoft.com/en-us/azure/storage/common/storage-import-export-service)
+
 [Use the Azure Import/Export service to export data from Azure Blob storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-import-export-data-from-blobs)
 
 [Use the Azure Import/Export service to import data to Azure Blob Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-import-export-data-from-blobs)
 
+[Download WAImportExportTool](https://www.microsoft.com/en-us/download/details.aspx?id=42659)
+
 ## Azure Storage Explorer
+
 [Get started with Storage Explorer](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer?WT.mc_id=thomasmaurer-blog-thmaure&tabs=windows)
 
 [Direct Download - Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 
 ## AZCopy
 
+[Direct Download - AzCopy](https://aka.ms/downloadazcopy-v10-windows)
+
 [Transfer data with AzCopy and file storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-files)
 
+[azcopy synopsis](https://docs.microsoft.com/en-us/azure/storage/common/storage-ref-azcopy)
 ## Miscellaneous
 
 [What is Azure CLI](https://docs.microsoft.com/en-us/cli/azure/what-is-azure-cli)
