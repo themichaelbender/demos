@@ -10,11 +10,18 @@ The following is a comprehensive guide of documentation related to Azure Backup 
 
 ## Azure Import/Export Service
 
+[Download v1 tool](https://www.microsoft.com/en-us/download/details.aspx?id=42659)
+
+[Download v2 tool](https://www.microsoft.com/en-us/download/details.aspx?id=55280)
+
+[Use the Azure Import/Export service to import data to Azure Blob Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-import-export-data-to-blobs?toc=/azure/storage/blobs/toc.json)
+
 [Use the Azure Import/Export service to export data from Azure Blob storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-import-export-data-from-blobs)
 
-[Use the Azure Import/Export service to import data to Azure Blob Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-import-export-data-from-blobs)
+[What is Azure DataBox?](https://docs.microsoft.com/en-us/azure/databox/data-box-overview)
 
 ## Azure Storage Explorer
+
 [Get started with Storage Explorer](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer?WT.mc_id=thomasmaurer-blog-thmaure&tabs=windows)
 
 [Direct Download - Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
