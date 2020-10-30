@@ -7,13 +7,9 @@ azcopy list 'https://sablobstorage0001.blob.core.windows.net/?sv=2019-12-12&ss=b
 
 azcopy list 'https://sablobstorage0001.file.core.windows.net/?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-10-17T03:47:10Z&st=2020-10-15T19:47:10Z&spr=https&sig=KiBapm%2BOVZ6QC72VrNQybpPxsuiC68OOwy9SdQ%2F9rLY%3D'
 
-<<<<<<< HEAD
-azcopy copy /home/michael/file003.txt 'https://sablobstorage0001.file.core.windows.net/demofiles/?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-10-17T03:47:10Z&st=2020-10-15T19:47:10Z&spr=https&sig=KiBapm%2BOVZ6QC72VrNQybpPxsuiC68OOwy9SdQ%2F9rLY%3D'
-=======
 azcopy copy -h 
 
 azcopy copy /home/michael/file003.txt "https://sablobstorage0001.file.core.windows.net/demofiles/?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-10-17T03:47:10Z&st=2020-10-15T19:47:10Z&spr=https&sig=KiBapm%2BOVZ6QC72VrNQybpPxsuiC68OOwy9SdQ%2F9rLY%3D"
->>>>>>> d9e91be48d354e1758e306c3c26c1daead58a504
 
 azcopy list 'https://sablobstorage0001.file.core.windows.net/?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-10-17T03:47:10Z&st=2020-10-15T19:47:10Z&spr=https&sig=KiBapm%2BOVZ6QC72VrNQybpPxsuiC68OOwy9SdQ%2F9rLY%3D'
 
