@@ -1,11 +1,19 @@
 # Azure Cloud Shell
-azcopy
+azcopy | more
+
+azcopy list -h
 
 azcopy list 'https://sablobstorage0001.blob.core.windows.net/?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-10-17T03:47:10Z&st=2020-10-15T19:47:10Z&spr=https&sig=KiBapm%2BOVZ6QC72VrNQybpPxsuiC68OOwy9SdQ%2F9rLY%3D'
 
 azcopy list 'https://sablobstorage0001.file.core.windows.net/?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-10-17T03:47:10Z&st=2020-10-15T19:47:10Z&spr=https&sig=KiBapm%2BOVZ6QC72VrNQybpPxsuiC68OOwy9SdQ%2F9rLY%3D'
 
+<<<<<<< HEAD
 azcopy copy /home/michael/file003.txt 'https://sablobstorage0001.file.core.windows.net/demofiles/?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-10-17T03:47:10Z&st=2020-10-15T19:47:10Z&spr=https&sig=KiBapm%2BOVZ6QC72VrNQybpPxsuiC68OOwy9SdQ%2F9rLY%3D'
+=======
+azcopy copy -h 
+
+azcopy copy /home/michael/file003.txt "https://sablobstorage0001.file.core.windows.net/demofiles/?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-10-17T03:47:10Z&st=2020-10-15T19:47:10Z&spr=https&sig=KiBapm%2BOVZ6QC72VrNQybpPxsuiC68OOwy9SdQ%2F9rLY%3D"
+>>>>>>> d9e91be48d354e1758e306c3c26c1daead58a504
 
 azcopy list 'https://sablobstorage0001.file.core.windows.net/?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-10-17T03:47:10Z&st=2020-10-15T19:47:10Z&spr=https&sig=KiBapm%2BOVZ6QC72VrNQybpPxsuiC68OOwy9SdQ%2F9rLY%3D'
 
@@ -18,6 +26,7 @@ azcopy list 'https://sablobstorage0001.blob.core.windows.net/?sv=2019-12-12&ss=b
 azcopy copy <clientpath> 'https://sablobstorage0001.blob.core.windows.net/blobexport/'
 
 #From clientpath
+<<<<<<< HEAD
 # Start in directory with azcopy.exe
 # In not registered, use .\azcopy.exe
 .\azcopy.exe login
@@ -37,3 +46,19 @@ azcopy copy <clientpath> 'https://sablobstorage0001.blob.core.windows.net/blobex
 .\azcopy copy .\file004.txt 'https://safilestorage001.file.core.windows.net/data/?sv=2019-12-12&ss=f&srt=sco&sp=rwdlc&se=2020-11-07T01:50:20Z&st=2020-10-25T16:50:20Z&spr=https&sig=bsuRsQt4e4SgkIHpdSbeFPX5NHL3JH84Vo3LtlmI%2BSE%3D'
 
 .\azcopy list 'https://safilestorage001.file.core.windows.net/data/?sv=2019-12-12&ss=f&srt=sco&sp=rwdlc&se=2020-11-07T01:50:20Z&st=2020-10-25T16:50:20Z&spr=https&sig=bsuRsQt4e4SgkIHpdSbeFPX5NHL3JH84Vo3LtlmI%2BSE%3D'
+=======
+cd c:\demo\azcopy\
+
+.Azcopy login
+
+azcopy list "https://sablobstorage0001.blob.core.windows.net/"
+
+#Copy to Container
+	azcopy copy "https://sablobstorage0001.blob.core.windows.net/blobexport?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-10-17T23:13:22Z&st=2020-10-16T15:13:22Z&spr=https&sig=zvWIm1dmifqDT1HA7ZIa%2BRYsjqE1%2FebLIxT8kKynfBY%3D" "https://satargetstorage001.blob.core.windows.net/blobexport?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-10-17T23:19:35Z&st=2020-10-16T15:19:35Z&spr=https&sig=UTT9rvoXdMpt2JbEyG0MR9m9k%2F9I4tl0eoIXp%2FCO9N0%3D" --recursive
+    azcopy list "https://sablobstorage0001.blob.core.windows.net/blobexport?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-10-17T23:13:22Z&st=2020-10-16T15:13:22Z&spr=https&sig=zvWIm1dmifqDT1HA7ZIa%2BRYsjqE1%2FebLIxT8kKynfBY%3D" "https://satargetstorage001.blob.core.windows.net/blobexport?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-10-17T23:19:35Z&st=2020-10-16T15:19:35Z&spr=https&sig=UTT9rvoXdMpt2JbEyG0MR9m9k%2F9I4tl0eoIXp%2FCO9N0%3D"
+
+<<<<<<< HEAD
+azcopy list "h ttps://satargetstorage001.blob.core.windows.net/"
+=======
+>>>>>>> ce94b7eaed7523cb667253a7f52e21ef9408677b
+>>>>>>> d9e91be48d354e1758e306c3c26c1daead58a504
