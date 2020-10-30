@@ -25,21 +25,21 @@ dir
 # Copy Local file to blobexport container in sablobstorage0001 storage account
 
 # Error command due to missing container name in URI
-azcopy copy c:/demos/file003.txt "https://sablobstorage0001.file.core.windows.net/?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-11-07T01:08:26Z&st=2020-10-29T16:08:26Z&spr=https&sig=h%2BvoHE3NmUdBwjxKkpmMACyCmgt6PuTD9UC2YNBQyjU%3D"
+azcopy copy c:/demos/file002.txt "https://sablobstorage0001.file.core.windows.net/?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-11-07T01:08:26Z&st=2020-10-29T16:08:26Z&spr=https&sig=h%2BvoHE3NmUdBwjxKkpmMACyCmgt6PuTD9UC2YNBQyjU%3D"
 
 # Copy and List
-azcopy copy c:/demos/file003.txt "https://sablobstorage0001.blob.core.windows.net/blobexport/?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-11-07T01:08:26Z&st=2020-10-29T16:08:26Z&spr=https&sig=h%2BvoHE3NmUdBwjxKkpmMACyCmgt6PuTD9UC2YNBQyjU%3D"
+azcopy copy c:/demos/file002.txt "https://sablobstorage0001.blob.core.windows.net/blobexport/?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-11-07T01:08:26Z&st=2020-10-29T16:08:26Z&spr=https&sig=h%2BvoHE3NmUdBwjxKkpmMACyCmgt6PuTD9UC2YNBQyjU%3D"
 azcopy list "https://sablobstorage0001.blob.core.windows.net/?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-11-07T01:08:26Z&st=2020-10-29T16:08:26Z&spr=https&sig=h%2BvoHE3NmUdBwjxKkpmMACyCmgt6PuTD9UC2YNBQyjU%3D"
 
 # View File Share in Storage Account
 azcopy list "https://sablobstorage0001.file.core.windows.net/?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-11-07T01:08:26Z&st=2020-10-29T16:08:26Z&spr=https&sig=h%2BvoHE3NmUdBwjxKkpmMACyCmgt6PuTD9UC2YNBQyjU%3D"
 
-azcopy copy c:/demos "https://sablobstorage0001.file.core.windows.net/demofiles/?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-11-07T01:08:26Z&st=2020-10-29T16:08:26Z&spr=https&sig=h%2BvoHE3NmUdBwjxKkpmMACyCmgt6PuTD9UC2YNBQyjU%3D" --recursive
+azcopy copy c:/demos/azcopy.exe "https://sablobstorage0001.file.core.windows.net/demofiles/?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-11-07T01:08:26Z&st=2020-10-29T16:08:26Z&spr=https&sig=h%2BvoHE3NmUdBwjxKkpmMACyCmgt6PuTD9UC2YNBQyjU%3D" --recursive
 
 # View in Azure Portal
 
 # Working with Azure AD Authentication
-# Open IE to https://microsoft.com/devicelogin
+# Open Private Edge Browser Window to https://microsoft.com/devicelogin
 azcopy login
 
 azcopy list "https://sablobstorage0001.blob.core.windows.net/"
@@ -63,10 +63,5 @@ azcopy remove "https://satargetstorage001.blob.core.windows.net/blob" --recursiv
 
 azcopy list "https://satargetstorage001.blob.core.windows.net/"	
 
-
-# Azure Files
-azcopy list "https://safilestorage001.file.core.windows.net/azuredata/"
-
-azcopy list "https://safilestorage001.file.core.windows.net/azuredata/?sv=2019-12-12&ss=f&srt=sco&sp=rwdlc&se=2020-11-07T01:50:20Z&st=2020-10-25T16:50:20Z&spr=https&sig=bsuRsQt4e4SgkIHpdSbeFPX5NHL3JH84Vo3LtlmI%2BSE%3D"
 
 
