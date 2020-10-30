@@ -39,7 +39,8 @@ azcopy copy c:/demos/azcopy.exe "https://sablobstorage0001.file.core.windows.net
 # View in Azure Portal
 
 # Working with Azure AD Authentication
-# Open Private Edge Browser Window to https://microsoft.com/devicelogin
+# Open # Open Private Edge Browser Window to https://microsoft.com/devicelogin
+ to https://microsoft.com/devicelogin
 azcopy login
 
 azcopy list "https://sablobstorage0001.blob.core.windows.net/"
@@ -62,6 +63,5 @@ AzCopy list "https://satargetstorage001.blob.core.windows.net/"
 azcopy remove "https://satargetstorage001.blob.core.windows.net/blob" --recursive
 
 azcopy list "https://satargetstorage001.blob.core.windows.net/"	
-
 
 
