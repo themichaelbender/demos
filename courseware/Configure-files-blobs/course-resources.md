@@ -15,3 +15,7 @@ The following is a comprehensive guide of documentation related to Azure Backup 
 [Planning for an Azure File Sync deployment](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-planning)
 
 [Deploy Azure File Sync](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal%2Cproactive-portal)
+
+[Direct Download](https://www.microsoft.com/en-us/download/details.aspx?id=57159)
+# Azure Blobs
+[Tiers](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal#quickstart-scenarios)
