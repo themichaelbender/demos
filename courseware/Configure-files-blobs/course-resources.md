@@ -9,8 +9,15 @@ The following is a comprehensive guide of documentation related to Azure Backup 
 [Direct Link AZ-104 Skills Measured Document](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4pCWy)
 
 ## Azure Files
+[What is Azure Files?](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-introduction)
+
+[Azure File Share Protocols](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-compare-protocols)
 
 [Azure Files Pricing Calculator](https://azure.microsoft.com/en-us/pricing/details/storage/files/)
+
+[Overview of Azure Files identity-based authentication options for SMB access](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-overview)
+
+[az storage account create](https://docs.microsoft.com/en-us/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_create)
 
 ### Azure File Sync
 
@@ -19,5 +26,11 @@ The following is a comprehensive guide of documentation related to Azure Backup 
 [Deploy Azure File Sync](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal%2Cproactive-portal)
 
 [Direct Download](https://www.microsoft.com/en-us/download/details.aspx?id=57159)
-# Azure Blobs
+
+## Azure Blobs
+
+[What is Azure Blob storage?](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blobs-overview)
+
+[Azure BlockBlobs pricing calculator](https://azure.microsoft.com/en-us/pricing/details/storage/blobs/)
+
 [Tiers](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal#quickstart-scenarios)
