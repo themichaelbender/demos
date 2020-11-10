@@ -4,3 +4,4 @@ az storage share create --account-name sablobstorage0001 --account-key 'p2Uf4Dss
 az storage directory create --account-name sablobstorage0001 --account-key 'p2Uf4DssK3Xdlk7F19vtuLwI2TtJRCxXuai5rd8DnRkN9p9ZENqTcjQvhnl7XB0UbP9O0sR/4a0nlBv6trk65w==' --share-name data3 --name "webpages"
 
 az storage file upload --account-name sablobstorage0001 --account-key 'p2Uf4DssK3Xdlk7F19vtuLwI2TtJRCxXuai5rd8DnRkN9p9ZENqTcjQvhnl7XB0UbP9O0sR/4a0nlBv6trk65w==' --share-name data3 --source "file002.html" --path "webpages/file002.html"
+  
