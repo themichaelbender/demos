@@ -1,0 +1,29 @@
+{
+    "rules": [
+      {
+        "enabled": true,
+        "name": "move-cool-45-days",
+        "type": "Lifecycle",
+        "definition": {
+          "actions": {
+            "baseBlob": {
+              "tierToCool": {
+                "daysAfterModificationGreaterThan": 45
+              },
+              "tierToArchive": {
+                "daysAfterModificationGreaterThan": 90
+              },
+              "delete": {
+                "daysAfterModificationGreaterThan": 2555
+              }
+            }
+          },
+          "filters": {
+            "blobTypes": [
+              "blockBlob"
+            ]
+          }
+        }
+      }
+    ]
+  }
