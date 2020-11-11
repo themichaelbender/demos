@@ -34,3 +34,15 @@ The following is a comprehensive guide of documentation related to Azure Backup 
 [Azure BlockBlobs pricing calculator](https://azure.microsoft.com/en-us/pricing/details/storage/blobs/)
 
 [Tiers](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal#quickstart-scenarios)
+
+## Miscellaneous
+
+[What is Azure CLI](https://docs.microsoft.com/en-us/cli/azure/what-is-azure-cli)
+
+[Get started with Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli)
+
+[az storage commands](https://docs.microsoft.com/en-us/cli/azure/storage?view=azure-cli-latest)
+
+[az.storage PowerShell Module](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-4.7.0)
+
+[Azure Cloud Shell Overview](https://docs.microsoft.com/azure/cloud-shell/overview)

@@ -1,6 +1,6 @@
 # Deploy Azure File Sync
 
-In this demo, you'll learn all of the steps for deploying Azure File sync with existing file shares in an Azure Storage account, and on an on-premises Windows Server. This will involve 2 Windows Servers representing different locations within an orginization.
+In this demo, you'll learn all of the steps for deploying Azure File sync with existing file shares in an Azure Storage account, and on an on-premises Windows Server. This will involve 2 Windows Servers representing different locations within an organization.
 
 ## Requirements
 
@@ -101,6 +101,7 @@ In this demo, you'll learn all of the steps for deploying Azure File sync with e
    7.  Browse to F:\ and verify Folders
    8.  Add file to folder - file005-west.txt
    9.  On data001, browse to f:\documents and verify folder has sync'd
+   10. Note: If you happen to change two files at the same time, Azure File Sync will
 
 ## Optional - Secure firewall and virtual network
 

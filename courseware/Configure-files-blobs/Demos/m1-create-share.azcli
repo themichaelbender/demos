@@ -1,7 +1,7 @@
-## Create a file share in storage account sablobstorage0001 using Shared Account
-az storage share create --account-name sablobstorage0001 --account-key 'p2Uf4DssK3Xdlk7F19vtuLwI2TtJRCxXuai5rd8DnRkN9p9ZENqTcjQvhnl7XB0UbP9O0sR/4a0nlBv6trk65w==' --name data3 --quota 2048 --enable-large-file-share true
+## Create a file share in storage account safilestorage001 using Shared Account
+az storage share create --account-name safilestorage001 --account-key 'p2Uf4DssK3Xdlk7F19vtuLwI2TtJRCxXuai5rd8DnRkN9p9ZENqTcjQvhnl7XB0UbP9O0sR/4a0nlBv6trk65w==' --name data --quota 2048 --enable-large-file-share true
 
-az storage directory create --account-name sablobstorage0001 --account-key 'p2Uf4DssK3Xdlk7F19vtuLwI2TtJRCxXuai5rd8DnRkN9p9ZENqTcjQvhnl7XB0UbP9O0sR/4a0nlBv6trk65w==' --share-name data3 --name "webpages"
+az storage directory create --account-name safilestorage001 --account-key 'p2Uf4DssK3Xdlk7F19vtuLwI2TtJRCxXuai5rd8DnRkN9p9ZENqTcjQvhnl7XB0UbP9O0sR/4a0nlBv6trk65w==' --share-name data --name "webpages"
 
-az storage file upload --account-name sablobstorage0001 --account-key 'p2Uf4DssK3Xdlk7F19vtuLwI2TtJRCxXuai5rd8DnRkN9p9ZENqTcjQvhnl7XB0UbP9O0sR/4a0nlBv6trk65w==' --share-name data3 --source "file002.html" --path "webpages/file002.html"
+az storage file upload --account-name safilestorage001 --account-key 'p2Uf4DssK3Xdlk7F19vtuLwI2TtJRCxXuai5rd8DnRkN9p9ZENqTcjQvhnl7XB0UbP9O0sR/4a0nlBv6trk65w==' --share-name data --source "webpage001.html" --path "webpages/file002.html"
   
