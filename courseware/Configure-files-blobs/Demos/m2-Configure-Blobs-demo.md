@@ -42,12 +42,10 @@ First, you’ll see how to create a General Purpose v2 Storage Account that will
           1. Add Soft Delete
           2. Add Versioning
    4. Mention Azure CDN
-   5. Set up Object Replication Rule
-      1. Destination: sablobstorage0001
-      2. source: blobdata
-      3. destination: targetreplication
 
-### Configure Azure Blob storage tiersThis final demo will focus on Azure Blob Storage Tiers. You'll see how to configure storage tiers at the storage account, container, and blob level. Also, you'll see how to perform migrations across tiers. Last item will be to cover automating tiering of objects in Storage Accounts with Lifecycle management.
+### Configure Azure Blob storage tiers
+
+This final demo will focus on Azure Blob Storage Tiers. You'll see how to configure storage tiers at the storage account, container, and blob level. Also, you'll see how to perform migrations across tiers. Last item will be to cover automating tiering of objects in Storage Accounts with Lifecycle management.
 
 1. Configure Storage Tiers
    1. Change Hot to Cool

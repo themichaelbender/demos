@@ -52,7 +52,7 @@ In this demo, you'll learn all of the steps for deploying Azure File sync with e
 
 ## Step 5 - Create a Server Endpoint
 
-1. Login to Azure Portal > rg-filesblobs-001 > svc-azfilesync-001 > sg-documents to open sync group
+1. Login to Azure Portal > rg-filestorage-001 > svc-azfilesync-001 > sg-documents to open sync group
    1. Note `Add cloud endpoint` is grey. Only 1 cloud endpoint per sync group.
 2. click `Add server endpoint`
 3. Choose server/s from dropdown menu
@@ -108,6 +108,8 @@ In this demo, you'll learn all of the steps for deploying Azure File sync with e
 1. goto Storage Account > Firewalls and virtual networks
 2. Choose Selected Networks
 3. Add IP addresses of clients
+   1. 40.83.139.241
+   2. 138.91.126.57
 4. Save
 
 ## Cleanup
