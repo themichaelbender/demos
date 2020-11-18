@@ -1,6 +1,6 @@
 # Course Resources for Microsoft Azure Administrator: Configure Azure Files and Azure Blobs
 
-The following is a comprehensive guide of documentation related to Azure Backup and Azure Site Recovery. Along with the video course and hands-on learning, reviewing all the Microsoft documentation related to the AZ-104 exam objectives is highly recommended for exam success.
+The following is a comprehensive guide of documentation related to Azure Files and Azure Blobs. Along with the video course and hands-on learning, reviewing all the Microsoft documentation related to the AZ-104 exam objectives is highly recommended for exam success.
 
 ## Microsoft Azure Administrator Exam AZ-104 Information
 
@@ -9,6 +9,7 @@ The following is a comprehensive guide of documentation related to Azure Backup 
 [Direct Link AZ-104 Skills Measured Document](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4pCWy)
 
 ## Azure Files
+
 [What is Azure Files?](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-introduction)
 
 [Azure File Share Protocols](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-compare-protocols)
