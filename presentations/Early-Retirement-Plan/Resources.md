@@ -1,7 +1,5 @@
 # Early Investment Club
 
-## 
-
 ## Links from chat
 
 [Simply Wall St](https://simplywall.st/)
@@ -28,6 +26,7 @@ https://youtu.be/MiybniIIvx0
 
 [Intro to ThinkOrSwim Web](https://youtu.be/ja0U-4fqWFU)
 
+[Make $250 with LEAPs Options | Beginner's Guide to LEAPs Call Options](https://www.youtube.com/watch?v=ExH0cUbKc9A)
 ## Books
 
 [One up on Wallstreet by Peter Lynch](https://www.amazon.com/One-Up-Wall-Street-Already/dp/0743200403)
