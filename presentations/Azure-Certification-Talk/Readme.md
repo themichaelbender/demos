@@ -26,7 +26,7 @@
 
 - [Azure Fundamentals - Microsoft Learn](https://bit.ly/azurefun)
 
-- [Free Azure Learning Paths at Pluralsight.com](https://bit.ly/azure-ps)
+- [AZ-104 Path at Pluralsight](http://bit.ly/psAZ104)
 
 - [Practice Exams at MeasureUp.com](https://www.measureup.com/microsoft-technical/microsoft-practice-tests.html)
 
