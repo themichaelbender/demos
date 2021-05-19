@@ -1,4 +1,4 @@
-# Resource Document for Azure Certification Webinar w/ Altaro Software
+# Resource Document for Azure Certification Talk
 
 ## This is a list of resources for your Azure Certification journey. Some of the resources were covered in the webinar, while others were not.
 
