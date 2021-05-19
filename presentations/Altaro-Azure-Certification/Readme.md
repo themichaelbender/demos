@@ -9,16 +9,17 @@ https://github.com/MicrosoftLearning
 - Microsoft Learning Certification Poster
 https://aka.ms/TrainCertPoster 
 
-- AZ-103 Certification Exam Page
-https://docs.microsoft.com/learn/certifications/exams/az-103
+- AZ-104 Certification Exam Page
+https://docs.microsoft.com/learn/certifications/exams/az-104
 
 - Spring 2020 Azure Certification Updates Blog
 http://bit.ly/320n3Ak
 
-- Propelling your career with Microsoft Azure and Pluralsight presetation at Microsoft Ignite
+- Propelling your career with Microsoft Azure and Pluralsight presentation at Microsoft Ignite
 https://myignite.techcommunity.microsoft.com/sessions/84325?source=sessions
 
 ### Training Resources:
+
 - Exam Self-assessment spreadsheet from build5nines (Scroll down and chose appropriate exam spreadsheet)
 https://build5nines.com/free-oss-exam-self-assessment-tool/
 
@@ -33,17 +34,6 @@ https://bit.ly/azurefun
 
 - Free Azure Learning Paths at Pluralsight.com 
 https://bit.ly/azure-ps
-
-- Exam Prep Sessions at Microsoft Ignite 2019
-  - [AZ-900](https://myignite.techcommunity.microsoft.com/sessions/78630?source=sessions)
-  
-  - [AZ-103](https://myignite.techcommunity.microsoft.com/sessions/80741?source=sessions)
-  
-  - [AZ-203](https://myignite.techcommunity.microsoft.com/sessions/78611?source=sessions)
-  
-  - [AZ-300](https://myignite.techcommunity.microsoft.com/sessions/80470?source=sessions)
-  
-  - [AZ-301](https://myignite.techcommunity.microsoft.com/sessions/78629)
 
 - Practice Exams at MeasureUp.com
 https://www.measureup.com/microsoft-technical/microsoft-practice-tests.html
