@@ -14,7 +14,8 @@ I'm a generalist who truly believes each and every person who attends a session 
 
 Soft skills talk are hard because you have to be open. You have to be vulnerable. Most technical speakers have a problem with that because you can't cover anything up with stuff people don't know or understand. I don't because it's never about me when I take the stage. It's about the audience. I'm there for them to learn, grow, and excel. My faults and failures are learning opportunities for them. I do this because giving back is how you thank those who helped pave your way.
 
-Rought Outline
+## Rough Outline
+
 1. Hi...I'm Michael and I'm an IT Pro
 2. Why the Cloud is Important
 3. How your career goes 10x with cloud knowledge
