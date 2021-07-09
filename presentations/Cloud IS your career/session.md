@@ -12,7 +12,7 @@ While I've worked for Microsoft, build cloud content at Pluralsight, and have me
 
 I'm a generalist who truly believes each and every person who attends a session is there for a reason. I get nervous every time I speak. Not because I have to speak but because I worry I won't give the audience what they came for. I over-prepare and deliver too much. Because it's hard out there, and each person who comes to my session deserves everything I have to give them. I will always feel like my presentation could have been better.
 
-Soft skills talk are hard because you have to be open. You have to be vulnerable. Most technical speakers have a problem with that because you caught cover anything up with stuff people don't know or understand. I don't because it's never about me when I take the stage. It's about the audience. I'm there for them to learn, grow, and excel. My faults and failures are learning opportunities for them. I do this because giving back is how you thank those who help pave your way.
+Soft skills talk are hard because you have to be open. You have to be vulnerable. Most technical speakers have a problem with that because you can't cover anything up with stuff people don't know or understand. I don't because it's never about me when I take the stage. It's about the audience. I'm there for them to learn, grow, and excel. My faults and failures are learning opportunities for them. I do this because giving back is how you thank those who helped pave your way.
 
 Rought Outline
 1. Hi...I'm Michael and I'm an IT Pro
