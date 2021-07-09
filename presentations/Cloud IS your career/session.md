@@ -2,7 +2,7 @@
 
 ## Description
 
-Cloud IS the buzz word of the day. Many of us are tired of it, but we know it is the end state. Your career depends on you being successful in the cloud, whether your company is there or not. In this session, you'll learn how to learn how to get the skills you need, in the time you have, and level up for the next opportunity. You'll still have to do the hard work, but I'll help you with the tools you need to make the change happen.
+Cloud IS the buzz word of the day, everyday it seems. Many of us are tired of it, but we know it is the next evolution for all organizations. Whether your company is there or not. your career depends on you being successful in the cloud,  In this session, you'll learn the skills you need, in the time you have, and how to level up for the next opportunity. Life long learning is the key. You'll still have to do the hard work, but I'll help you with the tools you need to make the change happen.
 
 ## Notes
 
@@ -22,4 +22,4 @@ Soft skills talk are hard because you have to be open. You have to be vulnerable
 4. Why your employer doesn't matter...much
 5. How to learn in the digital age
 6. Why certifications are your route to success
-7. Use the cloud vendor's docs to your benefit
+7. Use the cloud vendor's docs to your advantage
