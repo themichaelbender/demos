@@ -1,3 +1,0 @@
-# Create Azure Storage account with Azure CLI
-
-az storage account create --name stgpv2storagecli001 --resource-group rg-storage-001 --location eastus --sku Standard_LRS --kind StorageV2
