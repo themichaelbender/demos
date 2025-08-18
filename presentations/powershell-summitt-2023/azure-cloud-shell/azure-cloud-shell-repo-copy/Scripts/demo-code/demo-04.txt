@@ -1,0 +1,57 @@
+##### Azure VM Remoting Demo
+##############################################  
+  #This set of demos covers remoting into VMs in Azure.
+
+    #View commands in Azure Cloud Shell for Remoting
+      gcm *azVMPS*, Invoke-AzVMc*,Enter-AzVm*
+      
+      #Show SSH to linux VM in Azure Portal
+      
+      #confiugre SSH
+
+      #Generate SSH Key
+      ssh-keygen -t rsa -b 2048
+
+      #Verify Key
+        ls -al ~/.ssh
+        cat ~/.ssh/id_rsa.pub #List public key
+
+      # Build Linux VM with key
+      az vm create --resource-group 'rg-summit-prod-westus' --name 'lvm-summit-prod-westus-003' --image Ubuntu2204 --admin-username azureuser --ssh-key-value ~/.ssh/id_rsa.pub --public-ip-address ""
+      
+      #Connect to linux vm
+      ssh -i ~/.ssh/id_rsa azureuser@10.0.0.8
+
+      #  for reference (https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-ssh-keys-detailed)
+
+      #Enable Azure PSremoting
+      # Variables
+      $win = 'wvm-summit-prod-westus-001'
+      $lnx = 'vm-summit-prod-westus-001'
+      $rsg = 'rg-summit-prod-westus'
+      $cred = get-credential
+
+      # Windows VM
+      Enable-AzVMPSRemoting -Name $win -ResourceGroupName $rsg -Protocol https -OsType Windows
+
+      # Linux VM
+      Enable-AzVMPSRemoting -Name $lnx -ResourceGroupName $rsg -Protocol ssh -OsType Linux
+
+      # Run command on Windows VM using Invoke-Command
+      Invoke-AzVMCommand -Name $win -ResourceGroupName $rsg -ScriptBlock {get-service win*} -Credential $cred
+
+      # Linux VM - display current software and hardware information with uname
+      Invoke-AzVMCommand -Name $lnx -ResourceGroupName $rsg -ScriptBlock {uname -a} -UserName michael -KeyFilePath /home/michael/.ssh/id_rsa
+
+      # Connect to VM with Remoting
+
+      Enter-AzVM -name $win -ResourceGroupName $rsg -Credential $cred
+      $hostname
+      get-service win*
+      exit
+
+      #Disable Azure PSRemoting
+      Disable-AzVMPSRemoting -name $win -ResourceGroupName $rsg
+      Disable-AzVMPSRemoting -name $lnx -ResourceGroupName $rsg
+      Enter-AzVM -name $win -ResourceGroupName $rsg -Credential $cred
+      cls

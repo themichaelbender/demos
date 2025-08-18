@@ -20,6 +20,8 @@
   * Azure Storage Explorer
   * AZCopy 
   * https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-powershell
+* Azure Cloud Shell in Virtual Network
+    *
 * Using SSH for remoting to VMs
 * Working with Git Repos
   * Clone repo
@@ -28,6 +30,4 @@
 * Using the Cloud Shell editor (Monaco)
   * Walk through building a script from command and save to Cloud Shell editor
   * Upload and modify existing script in Editor
-* Deploy application group with GIT 
-* (optional) Use Managed Service Identity (MSI) in Azure Cloud Shell
-* 
+* Deploy application group with GIT

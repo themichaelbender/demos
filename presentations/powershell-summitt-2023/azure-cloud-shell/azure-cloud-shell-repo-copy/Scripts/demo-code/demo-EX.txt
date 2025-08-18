@@ -1,0 +1,19 @@
+Connect-EXOPSSession
+
+get-module tmp* | Select -ExpandProperty ExportedCommands 
+
+(get-module tmp* | Select -ExpandProperty ExportedCommands).count
+
+Get-User
+
+get-user Don.Funk | fl
+
+get-command -name get-mail*
+
+get-mailbox
+
+get-mailbox mibender | Fl | more
+
+get-mailbox | where ProhibitSendQuota -LE 50
+
+

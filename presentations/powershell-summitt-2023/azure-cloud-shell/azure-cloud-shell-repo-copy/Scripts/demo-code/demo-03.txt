@@ -1,0 +1,22 @@
+  ##############################################
+  ##### Terraform
+  ##############################################
+  cd $home
+        code ./main.tf 
+        
+        terraform init 
+    
+        terraform plan --out plan.out
+    
+        terraform apply plan.out
+    
+        #OPen Webpage with FQDN
+    
+        #Verify Resources
+        Get-AzResourceGroup -Name 'vote-resource-group'
+        
+        get-azResource -ResourceGroupName 'vote-resource-group' | ft
+    
+        #Remove Resources
+        terraform destroy -auto-approve##############################################
+ 

@@ -40,6 +40,8 @@ code
   [VS Code in Cloud Shell Blog](https://azure.microsoft.com/en-us/blog/cloudshelleditor/)
 
   ## Videos and Other
+  [Azure Cloud Shell GitHub Repo](https://github.com/themichaelbender/azure-cloud-shell.git)
+
   [Automate Tasks using Azure Cloud Shell](https://www.youtube.com/watch?v=GwT1j3JHSgw)
   [Azure Cloud Shell](https://www.youtube.com/watch?v=8Hicsru9x8o&t=293s)
 

@@ -1,0 +1,1 @@
+Get-AzVirtualNetwork | format-table -Property Name,AddressSpace

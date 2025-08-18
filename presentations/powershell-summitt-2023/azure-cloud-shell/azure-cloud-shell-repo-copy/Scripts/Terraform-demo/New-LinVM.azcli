@@ -1,0 +1,2 @@
+az group create --name demo-cloudshellvm-rg --location eastus
+az vm create --resource-group demo-cloudshellvm-rg --name CloudShellLin --image UbuntuLTS --admin-username thomas --generate-ssh-keys

@@ -1,0 +1,49 @@
+
+    ##############################################
+    ##### GIT DEMO
+    ##############################################
+  
+    #Deployment of ARM Template from GitHub
+    New-AzResourceGroup -Name 'cloudshell-demo-michael' -location 'westeurope'
+
+    get-azResource -ResourceGroupName 'cloudshell-demo-michael'
+
+    New-AzResourceGroupDeployment -Name 'cloudshell-demo-deploy' -ResourceGroupName 'cloudshell-demo-michael' -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-automatic-static-ip/azuredeploy.json -Verbose
+
+    get-azResource -ResourceGroupName 'cloudshell-demo-michael' | Format-Table
+    #Endregion - Deployment from Github
+
+    cls
+
+    #GIT Integration
+    
+        # Set remote url to repository; SSH must be created and stored
+        #Setting up GIT
+        cd $home/clouddrive
+        mkdir github
+        cd ./github
+        git config --global user.email "mbender@tailwindtraders.net"
+        git config --global user.name "mbender"
+        git clone https://github.com/themichaelbender-ms/azure-cloud-shell.git
+        dir
+
+        #Add Public key to GitHub
+        cat ~/.ssh/id_rsa.pub
+        cls
+        
+        # Set remote url to repository; SSH must be created and stored
+        cd ./azure-cloud-shell
+        git remote set-url origin git@github.com:themichaelbender-ms/azure-cloud-shell.git
+        git status
+        git branch
+        git checkout -b demo-cs
+        cd ./scripts
+        code ./New-testScriptv2.ps1 
+        code ./New-ServiceScript.ps1 #Update Script
+        cls
+        git status
+        git add ./New-TestScriptv2.ps1
+        git commit -a -m 'New Script and Update'
+        git status
+        git push -u origin demo-cs
+        #If Necessary Commit on GitHub

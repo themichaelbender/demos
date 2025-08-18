@@ -1,0 +1,46 @@
+##############################################
+  ##### Finding Commands
+  ##############################################
+      get-command -module PSCloudShellUtility
+      get-command -module Az*
+      get-command *AzureAD* 
+      help Get-AzVM 
+      Get-AzVm
+      Get-AzVm -ResourceGroupName 'azure-cloudshell-demo'
+      Get-AzVm -name *lin*
+      get-AzVm -name vm-linux-01 | FL
+      cls
+    
+  ##############################################
+  ##### Azure Drive
+  ##############################################
+      #Browse Resources in Shell
+      
+      Get-PSDrive  
+      dir
+      cd mibender
+      dir
+      cd ./VirtualMachines/
+      dir
+      get-AzVm -Name 'vm-win-01'
+      cd Azure:
+      cls
+
+  ##############################################
+  ##### Azure Cloud Shell Persistent Storage
+  ##############################################
+    $Home
+    cd $HOME
+    Get-command *clouddrive*
+    clouddrive
+    Get-CloudDrive
+    cd $Home
+    dir
+    cd clouddrive
+    mkdir Scripts
+    cd Scripts
+    dir
+    cls
+
+
+    1234$$dsfrdDD
